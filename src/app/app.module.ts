@@ -10,6 +10,8 @@ import { AboutPageComponent } from './about-page/about-page.component';
 import { ProductsPageComponent } from './products-page/products-page.component';
 import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { CategoryItemComponent } from './category-item/category-item.component';
+import { ProductItemComponent } from './product-item/product-item.component';
+import { ProductsListComponent } from './products-list/products-list.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { CategoryItemComponent } from './category-item/category-item.component';
     AboutPageComponent,
     ProductsPageComponent,
     CategoriesListComponent,
-    CategoryItemComponent
+    CategoryItemComponent,
+    ProductItemComponent,
+    ProductsListComponent
   ],
   imports: [
     BrowserModule,
