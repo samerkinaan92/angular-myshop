@@ -1,2 +1,2 @@
-<app-header></app-header>
-<app-main [curPage]="'home'"></app-main>
+<app-header (btnClicked)='changePage($event)'></app-header>
+<app-main [curPage]="curPage"></app-main>

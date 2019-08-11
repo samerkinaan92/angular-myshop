@@ -1,3 +1,5 @@
-<div *ngFor="let category of categories">
-    <label>{{ category.title }}</label>
+<div class="container">
+    <div class="item" *ngFor="let category of categories">
+        <label (click)="categoryClicked(category.id)">{{ category.title }}</label>
+    </div>
 </div>

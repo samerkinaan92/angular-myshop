@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CategoryService } from '../services/category.service';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-products-page',
@@ -8,11 +10,16 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductsPageComponent implements OnInit {
 
   products: Product[];
+  categoryId: string;
 
-  constructor() { }
+  constructor(private productsService: ProductsService) { }
 
   ngOnInit() {
+    this.products = this.productsService.getProducts();
+  }
 
+  showProducts(id){
+    this.categoryId = id;
   }
 
 }

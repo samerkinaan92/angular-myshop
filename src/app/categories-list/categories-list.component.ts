@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CategoryService } from '../services/category.service';
 
 @Component({
   selector: 'app-categories-list',
@@ -6,19 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories-list.component.css']
 })
 export class CategoriesListComponent implements OnInit {
+  
+  @Output() openCategory = new EventEmitter();
 
-  categories: Category[] = [
-    {id: "1",
-    title: "Computers"},
-    {id: "2",
-    title: "Hardwares"},
-    {id: "3",
-    title: "Monitors"}
-  ];
+  categories: Category[];
 
-  constructor() { }
+  constructor(private categoryService: CategoryService) { }
 
   ngOnInit() {
+    this.categories = this.categoryService.getCategories();
+  }
+
+  categoryClicked(id){
+    this.openCategory.emit(id);
   }
 
 }

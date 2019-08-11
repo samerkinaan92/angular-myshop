@@ -1,9 +1,13 @@
 header {
     height: 5vh;
     width: 100%;
-    background-color: aqua;
+    background-color: rgb(96, 175, 221);
 }
 
 img {
     width: 100%;
+}
+
+label {
+    margin: 8px;
 }

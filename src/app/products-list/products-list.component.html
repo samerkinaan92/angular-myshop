@@ -1,3 +1,6 @@
-<div *ngFor="let product of products">
-    <app-product-item *ngIf="product.categoryId===categoryId" [product]="product"></app-product-item>
+<div class="container">
+    <div *ngFor="let product of products">
+        <app-product-item *ngIf="product.categoryId===null; else definedCat" [product]="product"></app-product-item>
+        <app-product-item #definedCat *ngIf="product.categoryId===categoryId" [product]="product"></app-product-item>
+    </div>
 </div>
