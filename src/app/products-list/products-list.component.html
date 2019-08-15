@@ -1,6 +1,6 @@
 <div class="container">
-    <div *ngFor="let product of products">
-        <app-product-item *ngIf="product.categoryId===null; else definedCat" [product]="product"></app-product-item>
-        <app-product-item #definedCat *ngIf="product.categoryId===categoryId" [product]="product"></app-product-item>
+    <div *ngFor="let product of products; index as productId">
+        <app-product-item *ngIf="categoryId==='0'; else definedCat" [product]="product" [routerLink]="['/products', productId]"></app-product-item>
+        <app-product-item #definedCat *ngIf="product.categoryId===categoryId" [product]="product" [routerLink]="['/products', productId]"></app-product-item>
     </div>
 </div>

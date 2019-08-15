@@ -1,2 +1,2 @@
-<app-categories-list (openCategory)=showProducts($event)></app-categories-list>
+<app-categories-list @onInit (openCategory)=showProducts($event)></app-categories-list>
 <app-products-list [categoryId]='categoryId'></app-products-list>

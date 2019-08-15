@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { CategoryService } from '../services/category.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-categories-list',
@@ -12,10 +12,10 @@ export class CategoriesListComponent implements OnInit {
 
   categories: Category[];
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.categories = this.categoryService.getCategories();
+    this.categories = this.dataService.getCategories();
   }
 
   categoryClicked(id){

@@ -3,9 +3,9 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: "root"
 })
-export class ProductsService {
-  url = '../../assets/img/pc.jpg';
-  products: Product[] = [
+export class DataService {
+  private url = "../../assets/img/pc.jpg";
+  private products: Product[] = [
     {
       categoryId: "1",
       image: this.url,
@@ -30,64 +30,75 @@ export class ProductsService {
     {
       categoryId: "2",
       image: this.url,
-      title: "PC1",
+      title: "GPU",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "2",
       image: this.url,
-      title: "PC1",
+      title: "GPU",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "2",
       image: this.url,
-      title: "PC1",
+      title: "GPU",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
       image: this.url,
-      title: "PC1",
+      title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
       image: this.url,
-      title: "PC1",
+      title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
       image: this.url,
-      title: "PC1",
+      title: "monitor",
       price: 200,
-      description: "i7 8GB",
+      description: "i7 8GB"
     },
     {
       categoryId: "3",
       image: this.url,
-      title: "PC1",
+      title: "monitor",
       price: 200,
-      description: "i7 8GB",
+      description: "i7 8GB"
     },
     {
       categoryId: "3",
       image: this.url,
-      title: "PC1",
+      title: "monitor",
       price: 200,
-      description: "i7 8GB",
+      description: "i7 8GB"
     }
+  ];
+
+  private categories: Category[] = [
+    { id: "1", title: "Computers" },
+    { id: "2", title: "Hardwares" },
+    { id: "3", title: "Monitors" },
+    { id: "0", title: "All" }
   ];
 
   constructor() {}
 
-  getProducts(){
+  getProducts() {
     return this.products;
+  }
+
+  getCategories() {
+    return this.categories;
   }
 }
