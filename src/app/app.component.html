@@ -1,2 +1,7 @@
-<app-header (btnClicked)='changePage($event)'></app-header>
-<app-main [curPage]="curPage"></app-main>
+<div class="app">
+    <app-side-bar (btnClicked)='changePage($event)' [@openClose]="isOpen ? 'open' : 'closed'"></app-side-bar>
+    <main>
+        <app-header (sideBarToggle)='toggleSideBar()' class="side-bar open"></app-header>
+        <app-main [curPage]="curPage"></app-main>
+    </main>
+</div>
