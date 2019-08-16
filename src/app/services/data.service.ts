@@ -101,4 +101,8 @@ export class DataService {
   getCategories() {
     return this.categories;
   }
+
+  getProduct(id: number){
+    return this.products[id];
+  }
 }

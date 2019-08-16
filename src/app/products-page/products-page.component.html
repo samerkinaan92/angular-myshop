@@ -1,2 +1,6 @@
-<app-categories-list @onInit (openCategory)=showProducts($event)></app-categories-list>
-<app-products-list [categoryId]='categoryId'></app-products-list>
+
+<div *ngIf="isProducts; then details">
+    <app-categories-list @onInit (openCategory)=showProducts($event)></app-categories-list>
+    <app-products-list [categoryId]='categoryId' (openProductDetails)="openProductDetails($event)"></app-products-list>
+</div>
+<app-product-details #details [productId]="productId"></app-product-details>

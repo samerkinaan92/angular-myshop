@@ -15,6 +15,7 @@ import { ProductItemComponent } from './product-item/product-item.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { SocialLinksComponent } from './social-links/social-links.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     ProductItemComponent,
     ProductsListComponent,
     ProductDetailsComponent,
-    SideBarComponent
+    SideBarComponent,
+    SocialLinksComponent
   ],
   imports: [
     BrowserModule,

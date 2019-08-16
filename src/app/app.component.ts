@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
   animations: [
     trigger('openClose', [
       state('open', style({
-        width: '8%'
+        width: '15%'
       })),
       state('closed', style({
         width: '0%'

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../services/data.service';
 
 @Component({
@@ -10,13 +9,12 @@ import { DataService } from '../services/data.service';
 export class ProductDetailsComponent implements OnInit {
 
   private product: Product;
-
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  @Input() productId;
+ 
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.product = this.dataService.getProducts()[+params.get('productId')];
-    });
+    this.product = this.dataService.getProduct(this.productId);
   }
 
 }

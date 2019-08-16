@@ -21,8 +21,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class ProductsPageComponent implements OnInit {
 
+  isProducts = true;
   products: Product[];
   categoryId: string;
+  productId: number;
 
   constructor(private dataService: DataService) { }
 
@@ -33,6 +35,11 @@ export class ProductsPageComponent implements OnInit {
 
   showProducts(id){
     this.categoryId = id;
+  }
+
+  openProductDetails(productId){
+    this.isProducts = false;
+    this.productId = productId;
   }
 
 }
