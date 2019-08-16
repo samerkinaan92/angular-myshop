@@ -10,9 +10,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       transition(':enter', [
         style({
           opacity: 0,
-          transform: 'scale(0.8)'
+          transform: 'scale(0.9)'
         }),
-        animate('1s',
+        animate('0.5s',
           style({
             opacity: 1,
             transform: 'scale(1)'

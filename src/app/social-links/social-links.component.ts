@@ -13,7 +13,6 @@ export class SocialLinksComponent implements AfterContentInit {
   constructor() { }
 
   ngAfterContentInit(){
-    console.log(this.links);
     this.links.forEach((link) => {
       link.nativeElement.setAttribute('target', '_blank');
     });

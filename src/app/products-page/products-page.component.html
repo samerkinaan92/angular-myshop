@@ -1,6 +1,9 @@
-
-<div *ngIf="isProducts; then details">
+<div *ngIf="isProducts; then products else details">
+</div>
+<ng-template #products>
     <app-categories-list @onInit (openCategory)=showProducts($event)></app-categories-list>
     <app-products-list [categoryId]='categoryId' (openProductDetails)="openProductDetails($event)"></app-products-list>
-</div>
-<app-product-details #details [productId]="productId"></app-product-details>
+</ng-template>
+<ng-template #details>
+    <app-product-details [productId]="productId" (back)="closeDetails()"></app-product-details>
+</ng-template>

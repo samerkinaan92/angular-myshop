@@ -2,7 +2,22 @@ li:hover {
     cursor: pointer;
 }
 
+li {
+    padding: 5px;
+    list-style-type: none;
+}
+
 a {
     margin: 5px;
     padding: 5px;
+}
+
+app-social-links a img {
+    width: 20px;
+}
+
+nav {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
 }
