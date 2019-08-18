@@ -4,18 +4,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { MainComponent } from './main/main.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { AboutPageComponent } from './about-page/about-page.component';
-import { ProductsPageComponent } from './products-page/products-page.component';
-import { CategoriesListComponent } from './categories-list/categories-list.component';
-import { CategoryItemComponent } from './category-item/category-item.component';
-import { ProductItemComponent } from './product-item/product-item.component';
-import { ProductsListComponent } from './products-list/products-list.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
-import { SocialLinksComponent } from './social-links/social-links.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MainComponent } from './components/main/main.component';
+import { HomePageComponent } from './components/home-page/home-page.component';
+import { AboutPageComponent } from './components/about-page/about-page.component';
+import { ProductsPageComponent } from './components/products-page/products-page.component';
+import { CategoriesListComponent } from './components/categories-list/categories-list.component';
+import { CategoryItemComponent } from './components/category-item/category-item.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { SocialLinksComponent } from './components/social-links/social-links.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SocialLinksComponent } from './social-links/social-links.component';
     ProductsListComponent,
     ProductDetailsComponent,
     SideBarComponent,
-    SocialLinksComponent
+    SocialLinksComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,

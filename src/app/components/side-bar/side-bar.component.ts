@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-side-bar',
@@ -9,13 +10,14 @@ export class SideBarComponent implements OnInit {
 
   @Output() btnClicked = new EventEmitter();
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit() {
   }
 
   btnClick(btn){
     this.btnClicked.emit(btn);
+    console.log(this.cartService.getItemsCount());
   }
 
 }

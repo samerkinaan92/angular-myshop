@@ -21,3 +21,11 @@ nav {
     flex-flow: column nowrap;
     justify-content: space-between;
 }
+
+.blue {
+    color: rgb(29, 67, 117);
+}
+
+li {
+    list-style-type: none;
+}

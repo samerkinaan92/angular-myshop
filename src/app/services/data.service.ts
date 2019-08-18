@@ -8,77 +8,77 @@ export class DataService {
   private products: Product[] = [
     {
       categoryId: "1",
-      image: this.url,
+      imgUrl: this.url,
       title: "PC1",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "1",
-      image: this.url,
+      imgUrl: this.url,
       title: "PC1",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "1",
-      image: this.url,
+      imgUrl: this.url,
       title: "PC1",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "2",
-      image: this.url,
+      imgUrl: this.url,
       title: "GPU",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "2",
-      image: this.url,
+      imgUrl: this.url,
       title: "GPU",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "2",
-      image: this.url,
+      imgUrl: this.url,
       title: "GPU",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      image: this.url,
+      imgUrl: this.url,
       title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      image: this.url,
+      imgUrl: this.url,
       title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      image: this.url,
+      imgUrl: this.url,
       title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      image: this.url,
+      imgUrl: this.url,
       title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      image: this.url,
+      imgUrl: this.url,
       title: "monitor",
       price: 200,
       description: "i7 8GB"

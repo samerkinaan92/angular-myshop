@@ -1,6 +1,6 @@
 class Product{
     categoryId: string;
-    image: string;
+    imgUrl: string;
     title: string;
     price: number;
     description: string;

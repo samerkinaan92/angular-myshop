@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DataService } from '../services/data.service';
+import { DataService } from '../../services/data.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-details',
@@ -12,7 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   @Input() productId;
   @Output() back = new EventEmitter();
  
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private cartService: CartService) { }
 
   ngOnInit() {
     this.product = this.dataService.getProduct(this.productId);
@@ -20,6 +21,10 @@ export class ProductDetailsComponent implements OnInit {
 
   onBackClick(){
     this.back.emit();
+  }
+
+  addToCart(){
+    this.cartService.addItem(this.productId);
   }
 
 }
