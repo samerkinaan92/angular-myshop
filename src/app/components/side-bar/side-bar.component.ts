@@ -17,7 +17,6 @@ export class SideBarComponent implements OnInit {
 
   btnClick(btn){
     this.btnClicked.emit(btn);
-    console.log(this.cartService.getItemsCount());
   }
 
 }

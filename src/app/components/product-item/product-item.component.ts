@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { DataService } from 'src/app/services/data.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product-item',
@@ -20,11 +22,19 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class ProductItemComponent implements OnInit {
 
-  @Input() product: Product;
+  product: Product;
+  @Input() productId: number;
 
-  constructor() { }
+  constructor(private dataService: DataService, private cartService: CartService) { }
 
   ngOnInit() {
+    this.product = this.dataService.getProduct(this.productId);
   }
+
+  addToCart(){
+    this.cartService.addItem(this.productId);
+  }
+
+  
 
 }

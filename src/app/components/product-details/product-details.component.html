@@ -1,5 +1,5 @@
 <h1>{{ product.title }}</h1>
-<img src="../../assets/img/pc.jpg" alt="product">
+<img [src]="product.imgUrl" alt="product">
 <p> price: {{ product.price }}</p>
 <p> description: {{ product.description }}</p>
 <button (click)="onBackClick()">Back</button>

@@ -6,27 +6,7 @@ import { DataService } from './data.service';
 })
 export class CartService {
 
-  private url = "../../assets/img/pc.jpg";
-
-  private cart: Product[] = [{
-    categoryId: "1",
-    imgUrl: this.url,
-    title: "PC1",
-    price: 200,
-    description: "i7 8GB"
-  }, {
-    categoryId: "2",
-    imgUrl: this.url,
-    title: "GPU",
-    price: 200,
-    description: "i7 8GB"
-  }, {
-    categoryId: "3",
-    imgUrl: this.url,
-    title: "monitor",
-    price: 200,
-    description: "i7 8GB"
-  }];
+  private cart: Product[] = [];
 
   constructor(private dataService: DataService) { }
 

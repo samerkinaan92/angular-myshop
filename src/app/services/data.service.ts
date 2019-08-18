@@ -4,81 +4,83 @@ import { Injectable } from "@angular/core";
   providedIn: "root"
 })
 export class DataService {
-  private url = "../../assets/img/pc.jpg";
+  private pcUrl = "../../assets/img/pc.jpg";
+  private gpuUrl = "../../assets/img/gpu.jpg";
+  private monUrl = "../../assets/img/monitor.jpg";
   private products: Product[] = [
     {
       categoryId: "1",
-      imgUrl: this.url,
+      imgUrl: this.pcUrl,
       title: "PC1",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "1",
-      imgUrl: this.url,
+      imgUrl: this.pcUrl,
       title: "PC1",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "1",
-      imgUrl: this.url,
+      imgUrl: this.pcUrl,
       title: "PC1",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "2",
-      imgUrl: this.url,
+      imgUrl: this.gpuUrl,
       title: "GPU",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "2",
-      imgUrl: this.url,
+      imgUrl: this.gpuUrl,
       title: "GPU",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "2",
-      imgUrl: this.url,
+      imgUrl: this.gpuUrl,
       title: "GPU",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      imgUrl: this.url,
+      imgUrl: this.monUrl,
       title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      imgUrl: this.url,
+      imgUrl: this.monUrl,
       title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      imgUrl: this.url,
+      imgUrl: this.monUrl,
       title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      imgUrl: this.url,
+      imgUrl: this.monUrl,
       title: "monitor",
       price: 200,
       description: "i7 8GB"
     },
     {
       categoryId: "3",
-      imgUrl: this.url,
+      imgUrl: this.monUrl,
       title: "monitor",
       price: 200,
       description: "i7 8GB"

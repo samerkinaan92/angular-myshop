@@ -10,7 +10,6 @@ import { HomePageComponent } from './components/home-page/home-page.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ProductsPageComponent } from './components/products-page/products-page.component';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
-import { CategoryItemComponent } from './components/category-item/category-item.component';
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
@@ -27,7 +26,6 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     AboutPageComponent,
     ProductsPageComponent,
     CategoriesListComponent,
-    CategoryItemComponent,
     ProductItemComponent,
     ProductsListComponent,
     ProductDetailsComponent,

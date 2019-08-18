@@ -1,8 +1,9 @@
 <div @onInit class="card">
     <img [src]="product.imgUrl" alt="product image">
     <div class="container">
-        <h4><b>{{ product.title }}</b></h4>
-        <p> {{ product.price }} </p>
-        <p>{{ product.description }}</p>
+        <h1>{{ product.title }}</h1>
+        <p class="price"> {{ product.price }}$</p>
+        <p class="description">{{ product.description }}</p>
+        <p><button (click)="addToCart()">Add to Cart</button></p>
     </div>
 </div>
