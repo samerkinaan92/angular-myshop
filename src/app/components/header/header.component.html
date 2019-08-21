@@ -1,4 +1,13 @@
 <header>
-    <label (click)="ToggleSideBar()">side bar</label>
+    <label (click)="ToggleSideBar()"><img class="menu-btn" src="../../../assets/img/menu.svg" alt="menu"></label>
+    <div class="right">
+        <select class="lang-select" (change)="onLangChange($event.target.value)">
+            <option [value]="'en'">en</option>
+            <option [value]="'he'">he</option>
+        </select>
+        <div *ngIf="userService.getCurUser() == null; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock><button class="log-btn login" (click)="login()">login</button></ng-template>
+        <ng-template #elseBlock><button class="log-btn logout" (click)="logout()">logout</button></ng-template>
+    </div>
 </header>
-<img src="../../assets/img/background.png" alt="background image">
+<img class="header-img" src="../../assets/img/background.png" alt="background image">

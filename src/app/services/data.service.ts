@@ -90,8 +90,7 @@ export class DataService {
   private categories: Category[] = [
     { id: "1", title: "Computers" },
     { id: "2", title: "Hardwares" },
-    { id: "3", title: "Monitors" },
-    { id: "0", title: "All" }
+    { id: "3", title: "Monitors" }
   ];
 
   constructor() {}
@@ -106,5 +105,9 @@ export class DataService {
 
   getProduct(id: number){
     return this.products[id];
+  }
+
+  addProduct(product: Product){
+    this.products.push(product);
   }
 }

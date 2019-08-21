@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  @Input() curPage;
+  @Input() curPage: string;
 
   constructor() { }
 

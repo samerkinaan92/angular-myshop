@@ -1,0 +1,26 @@
+<div class="center">
+    <form (ngSubmit)="login()" #loginForm="ngForm">
+        <div class="row">
+            <div class="col-25">
+                <label>username</label>
+            </div>
+            <div class="col-75">
+                <input type="text" name="username" [(ngModel)]="username" required minlength="3">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <Label>password</Label>
+            </div>
+            <div class="col-75">
+                <input type="password" name="password" [(ngModel)]="password" required minlength="3">
+            </div>
+        </div>
+        <div class="row">
+            <input [disabled]="!loginForm.form.valid" type="submit" value="login">
+        </div>
+        <div class="row">
+            <p>{{ loginMsg }}</p>
+        </div>
+    </form>
+</div>

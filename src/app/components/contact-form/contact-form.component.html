@@ -1,0 +1,32 @@
+<form #contactForm="ngForm" (ngSubmit)="send()">
+    <div class="row">
+        <div class="col-25">
+            <label>Email</label>
+        </div>
+        <div class="col-50">
+            <input type="email" name="email" [(ngModel)]="email" #emailInput="ngModel" email required>
+        </div>
+        <div class="col-25">
+            <label [hidden]="emailInput.valid || emailInput.pristine">Email is invalid</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+            <label>Subject</label>
+        </div>
+        <div class="col-50">
+            <input type="text" name="subject" [(ngModel)]="subject" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+            <label>Message</label>
+        </div>
+        <div class="col-50">
+            <textarea name="msg" [(ngModel)]="msg"></textarea>
+        </div>
+    </div>
+    <div class="row">
+        <input type="submit" value="send" [disabled]="!contactForm.form.valid">
+    </div>
+</form>

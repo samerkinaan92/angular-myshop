@@ -1,28 +1,61 @@
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private cart: Product[] = [];
+  private carts: Cart[] = [];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private userService: UserService) { }
 
   addItem(productId: number) {
-    this.cart.push(this.dataService.getProduct(productId));
+    let userName = this.userService.getCurUser();
+    if (userName != null) {
+      for (const cart of this.carts) {
+        if (cart.user === userName) {
+          cart.products.push(this.dataService.getProduct(productId));
+        }
+      }
+      this.carts.push({user: userName, products: [this.dataService.getProduct(productId)]});
+    }
   }
 
   removeItem(index: number) {
-    this.cart.splice(index, 1);
+    let userName = this.userService.getCurUser();
+    if (userName != null) {
+      for (const cart of this.carts) {
+        if (cart.user === userName) {
+          cart.products.splice(index, 1);
+        }
+      }
+    }
   }
 
   getItems(): Product[] {
-    return this.cart;
+    let userName = this.userService.getCurUser();
+    if (userName != null) {
+      for (const cart of this.carts) {
+        if (cart.user === userName) {
+          return cart.products;
+        }
+      }
+      return [];
+    }
+    return null;
   }
 
   getItemsCount(): number {
-    return this.cart.length;
+    let userName = this.userService.getCurUser();
+    if (userName != null) {
+      for (const cart of this.carts) {
+        if (cart.user === userName) {
+          return cart.products.length;
+        }
+      }
+    }
+    return 0;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-product-details',
@@ -13,7 +14,7 @@ export class ProductDetailsComponent implements OnInit {
   @Input() productId;
   @Output() back = new EventEmitter();
  
-  constructor(private dataService: DataService, private cartService: CartService) { }
+  constructor(private dataService: DataService, private cartService: CartService, private userService: UserService) { }
 
   ngOnInit() {
     this.product = this.dataService.getProduct(this.productId);

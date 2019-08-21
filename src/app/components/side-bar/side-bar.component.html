@@ -1,11 +1,12 @@
 <nav>
     <div class="links-container">
         <ul>
-            <li (click)="btnClick('home')">Home</li>
-            <li (click)="btnClick('products')">Products</li>
-            <li (click)="btnClick('cart')">Cart <span class="blue">{{cartService.getItemsCount()}}</span></li>
-            <li (click)="btnClick('about')">About</li>
-            <li (click)="btnClick('contact')">Contact</li>
+            <li (click)="btnClick('home')">{{ 'Home' | localize:curLang }}</li>
+            <li (click)="btnClick('products')">{{'Products' | localize:curLang }}</li>
+            <li (click)="btnClick('cart')" [hidden]="userService.getCurUser() == null">{{'Cart' | localize:curLang }} <span class="blue">{{cartService.getItemsCount()}}</span></li>
+            <li (click)="btnClick('about')">{{'About' | localize:curLang }}</li>
+            <li (click)="btnClick('add product')" [hidden]="!userService.isAdmin()">{{'Add product' | localize:curLang }}</li>
+            <li (click)="btnClick('contact')">{{'Contact' | localize:curLang }}</li>
         </ul>
     </div>
 

@@ -2,4 +2,7 @@
     <div class="item" *ngFor="let category of categories">
         <label (click)="categoryClicked(category.id)">{{ category.title }}</label>
     </div>
+    <div class="item">
+        <label (click)="categoryClicked('0')">All</label>
+    </div>
 </div>

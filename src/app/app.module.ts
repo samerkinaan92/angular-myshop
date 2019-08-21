@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +17,10 @@ import { ProductDetailsComponent } from './components/product-details/product-de
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { SocialLinksComponent } from './components/social-links/social-links.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { LocalizePipe } from './pipes/localize.pipe';
 
 @NgModule({
   declarations: [
@@ -31,12 +36,18 @@ import { CartPageComponent } from './components/cart-page/cart-page.component';
     ProductDetailsComponent,
     SideBarComponent,
     SocialLinksComponent,
-    CartPageComponent
+    CartPageComponent,
+    LoginFormComponent,
+    ContactFormComponent,
+    ProductFormComponent,
+    LocalizePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
