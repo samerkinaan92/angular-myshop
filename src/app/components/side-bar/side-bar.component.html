@@ -5,7 +5,7 @@
             <li (click)="btnClick('products')">{{'Products' | localize:curLang }}</li>
             <li (click)="btnClick('cart')" [hidden]="userService.getCurUser() == null">{{'Cart' | localize:curLang }} <span class="blue">{{cartService.getItemsCount()}}</span></li>
             <li (click)="btnClick('about')">{{'About' | localize:curLang }}</li>
-            <li (click)="btnClick('add product')" [hidden]="!userService.isAdmin()">{{'Add product' | localize:curLang }}</li>
+            <li (click)="btnClick('add product')" [hidden]="!userService.hasPermission()">{{'Add product' | localize:curLang }}</li>
             <li (click)="btnClick('contact')">{{'Contact' | localize:curLang }}</li>
         </ul>
     </div>

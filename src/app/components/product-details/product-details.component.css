@@ -15,6 +15,7 @@ button {
 .title {
     padding: 8px;
     margin-bottom: 8px;
+    size: 50px;
 }
 
 .description-title {
@@ -22,9 +23,20 @@ button {
 }
 
 .description {
-    padding: 8px;
+    padding: 12px;
 }
 
 .price {
-    padding: 8px;
+    /*gray*/
+    color: rgb(128, 128, 128);
+    font-size: 22px;
+    margin: 12px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.center {
+    text-align: center;
 }

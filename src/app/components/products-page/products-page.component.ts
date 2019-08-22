@@ -21,7 +21,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class ProductsPageComponent implements OnInit {
 
-  isProducts: boolean = true;
+  page: string = "products";
   products: Product[];
   categoryId: string;
   productId: number;
@@ -38,12 +38,15 @@ export class ProductsPageComponent implements OnInit {
   }
 
   openProductDetails(productId){
-    this.isProducts = false;
+    this.page = "details";
     this.productId = productId;
-    console.log(this.productId);
   }
 
   closeDetails(){
-    this.isProducts = true;
+    this.page = "products";
+  }
+
+  editProduct(){
+    this.page = "edit";
   }
 }

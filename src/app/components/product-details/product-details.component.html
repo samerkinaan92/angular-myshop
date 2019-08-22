@@ -2,12 +2,12 @@
     <div class="col-50">
         <img [src]="product.imgUrl" alt="product">
     </div>
-    <div class="col-50">
+    <div class="col-50 center">
         <h1 class="title">{{ product.title | uppercase}}</h1>
         <p class="description">{{ product.description }}</p>
-        <p class="price"> price: {{ product.price | currency}}</p>
+        <p class="price">{{ product.price | currency}}</p>
         <button (click)="onBackClick()" class="back-btn">{{'Back' | uppercase}}</button>
         <button (click)="addToCart()" class="add-btn" [hidden]="userService.getCurUser() == null">{{'Add to Cart' | uppercase}}</button>
-        <button (click)="edit()" class="edit-btn">{{'edit' | uppercase}}</button>
+        <button *ngIf="userService.hasPermission()" (click)="edit()" class="edit-btn">{{'edit' | uppercase}}</button>
     </div>
 </div>

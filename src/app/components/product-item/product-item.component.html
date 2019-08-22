@@ -1,7 +1,7 @@
 <div @onInit class="card">
     <img [src]="product.imgUrl" alt="product image">
     <div class="container">
-        <h1>{{ product.title }}</h1>
+        <h1>{{ product.title | uppercase}}</h1>
         <p class="price"> {{ product.price | currency }}</p>
         <p class="description">{{ product.description }}</p>
         <p><button (click)="addToCart()" [disabled]="userService.getCurUser() == null">Add to Cart</button></p>

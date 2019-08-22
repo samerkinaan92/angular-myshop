@@ -13,6 +13,7 @@ export class ProductDetailsComponent implements OnInit {
   private product: Product;
   @Input() productId;
   @Output() back = new EventEmitter();
+  @Output() editEvent = new EventEmitter();
  
   constructor(private dataService: DataService, private cartService: CartService, private userService: UserService) { }
 
@@ -26,6 +27,10 @@ export class ProductDetailsComponent implements OnInit {
 
   addToCart(){
     this.cartService.addItem(this.productId);
+  }
+
+  edit(){
+    this.editEvent.emit();
   }
 
 }

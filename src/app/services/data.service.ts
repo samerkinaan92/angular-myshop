@@ -95,19 +95,23 @@ export class DataService {
 
   constructor() {}
 
-  getProducts() {
+  getProducts(): Product[] {
     return this.products;
   }
 
-  getCategories() {
+  getCategories():Category[] {
     return this.categories;
   }
 
-  getProduct(id: number){
+  getProduct(id: number): Product{
     return this.products[id];
   }
 
-  addProduct(product: Product){
+  addProduct(product: Product): void{
     this.products.push(product);
+  }
+
+  editProduct(product: Product, id: number): void{
+    this.products[id] = product;
   }
 }

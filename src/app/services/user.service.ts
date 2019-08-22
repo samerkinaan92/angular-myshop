@@ -17,7 +17,7 @@ export class UserService {
     }
   }
 
-  isAdmin() {
+  hasPermission() {
     if (this.curUser != null && this.curUser.type === 0) {
       return true;
     } else {
