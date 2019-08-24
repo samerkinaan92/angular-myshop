@@ -17,10 +17,8 @@
             </div>
         </div>
         <div class="row">
+            <span>{{ loginMsg }}</span>
             <input [disabled]="!loginForm.form.valid" type="submit" value="login">
-        </div>
-        <div class="row">
-            <p>{{ loginMsg }}</p>
         </div>
     </form>
 </div>

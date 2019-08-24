@@ -30,6 +30,11 @@
         </div>
     </div>
     <div class="row">
-        <input type="submit" value="send" [disabled]="!contactForm.form.valid">
+        <div class="col-25">
+        </div>
+        <div class="col-50 center">
+            <span [hidden]="!isSent">Message was sent.</span>
+            <input type="submit" value="send" [disabled]="!contactForm.form.valid">
+        </div>
     </div>
 </form>

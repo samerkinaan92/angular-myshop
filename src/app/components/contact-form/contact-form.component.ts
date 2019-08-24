@@ -10,11 +10,13 @@ export class ContactFormComponent {
   email: string;
   subject: string;
   msg: string;
+  isSent: boolean = false;
 
   constructor() { }
 
   send(){
     console.log("Email:", this.email, ",Subject:", this.subject, ",msg:", this.msg);
+    this.isSent = true;
   }
 
 }

@@ -51,6 +51,7 @@ export class ProductFormComponent implements OnInit {
         price: 1,
         description: ''
       });
+      alert("Product was added.");
     } else {
       this.dataService.editProduct(newProduct, this.productId);
       this.savedEvent.emit();
