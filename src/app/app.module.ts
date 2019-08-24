@@ -21,6 +21,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { LocalizePipe } from './pipes/localize.pipe';
+import { ConfirmDirective } from './directives/app-confirm.directive';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LocalizePipe } from './pipes/localize.pipe';
     LoginFormComponent,
     ContactFormComponent,
     ProductFormComponent,
-    LocalizePipe
+    LocalizePipe,
+    ConfirmDirective
   ],
   imports: [
     BrowserModule,
