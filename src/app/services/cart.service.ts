@@ -52,8 +52,6 @@ export class CartService {
   }
 
   getItemsCount(): number {
-    console.log("cart");
-    
     let userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {

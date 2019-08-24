@@ -3,41 +3,53 @@
         <div class="col-25">
             <label>Category</label>
         </div>
-        <div class="col-75">
+        <div class="col-50">
             <select formControlName="category">
                 <option *ngFor="let category of categories" [ngValue]="category">{{ category.title }}</option>
             </select>
+        </div>
+        <div class="col-25 err-msg">
+            <span [hidden]="category.valid || category.pristine" class="err-msg">Category is required.</span>
         </div>
     </div>
     <div class="row">
         <div class="col-25">
             <label>Image</label>
         </div>
-        <div class="col-75">
+        <div class="col-50">
             <input type="text" formControlName="img">
+        </div>
+        <div class="col-25 err-msg">
+            <span [hidden]="img.valid || img.pristine">Image url is required.</span>
         </div>
     </div>
     <div class="row">
         <div class="col-25">
             <label>Title</label>
         </div>
-        <div class="col-75">
+        <div class="col-50">
             <input type="text" formControlName="title">
+        </div>
+        <div class="col-25 err-msg">
+            <span [hidden]="title.valid || title.pristine">Title is required.</span>
         </div>
     </div>
     <div class="row">
         <div class="col-25">
             <label>Price</label>
         </div>
-        <div class="col-75">
+        <div class="col-50">
             <input type="number" formControlName="price">
+        </div>
+        <div class="col-25 err-msg">
+            <span [hidden]="price.valid || price.pristine">price must be larger than 0.</span>
         </div>
     </div>
     <div class="row">
         <div class="col-25">
             <label>Description</label>
         </div>
-        <div class="col-75">
+        <div class="col-50">
             <textarea name="description" formControlName="description"></textarea>
         </div>
     </div>

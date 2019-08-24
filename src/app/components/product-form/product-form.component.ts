@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-product-form',
@@ -27,7 +27,7 @@ export class ProductFormComponent implements OnInit {
       category: [this.categories[parseInt(newProduct.categoryId) - 1], Validators.required],
       img: [newProduct.imgUrl, Validators.required],
       title: [newProduct.title, Validators.required],
-      price: [newProduct.price, [Validators.required, Validators.min(1)]],
+      price: [newProduct.price, [Validators.required, Validators.min(0.01)]],
       description: newProduct.description
     });
   }
@@ -55,5 +55,21 @@ export class ProductFormComponent implements OnInit {
       this.dataService.editProduct(newProduct, this.productId);
       this.savedEvent.emit();
     }
+  }
+
+  get category(): AbstractControl {
+    return this.productForm.get('category');
+  }
+
+  get img(): AbstractControl {
+    return this.productForm.get('img');
+  }
+
+  get title(): AbstractControl {
+    return this.productForm.get('title');
+  }
+
+  get price(): AbstractControl {
+    return this.productForm.get('price');
   }
 }
