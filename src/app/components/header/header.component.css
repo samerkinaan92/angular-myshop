@@ -1,9 +1,9 @@
 header {
-    height: 5vh;
     width: 100%;
     background-color: rgb(96, 175, 221);
     display: flex;
     align-items: center;
+    padding: 3px;
 }
 
 .header-img {

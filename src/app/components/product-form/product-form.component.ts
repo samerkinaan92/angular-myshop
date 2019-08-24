@@ -24,7 +24,7 @@ export class ProductFormComponent implements OnInit {
       newProduct = this.dataService.getProduct(this.productId);
     }
     this.productForm = this.fb.group({
-      category: [this.categories[newProduct.categoryId], Validators.required],
+      category: [this.categories[parseInt(newProduct.categoryId) - 1], Validators.required],
       img: [newProduct.imgUrl, Validators.required],
       title: [newProduct.title, Validators.required],
       price: [newProduct.price, [Validators.required, Validators.min(1)]],

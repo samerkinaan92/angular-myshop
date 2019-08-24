@@ -1,4 +1,4 @@
 class Cart{
     user: string;
-    products: Product[];
+    products: number[];
 }

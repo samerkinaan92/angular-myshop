@@ -11,19 +11,19 @@ export class CartService {
 
   constructor(private dataService: DataService, private userService: UserService) { }
 
-  addItem(productId: number) {
+  addItem(productId: number):void {
     let userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
         if (cart.user === userName) {
-          cart.products.push(this.dataService.getProduct(productId));
+          cart.products.push(productId);
         }
       }
-      this.carts.push({user: userName, products: [this.dataService.getProduct(productId)]});
+      this.carts.push({user: userName, products: [productId]});
     }
   }
 
-  removeItem(index: number) {
+  removeItem(index: number):void {
     let userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
@@ -39,7 +39,11 @@ export class CartService {
     if (userName != null) {
       for (const cart of this.carts) {
         if (cart.user === userName) {
-          return cart.products;
+          let products: Product[] = [];
+          for (const id of cart.products) {
+            products.push(this.dataService.getProduct(id));
+          }
+          return products;
         }
       }
       return [];
@@ -48,6 +52,8 @@ export class CartService {
   }
 
   getItemsCount(): number {
+    console.log("cart");
+    
     let userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {

@@ -6,8 +6,8 @@
         <div class="col-50">
             <input type="email" name="email" [(ngModel)]="email" #emailInput="ngModel" email required>
         </div>
-        <div class="col-25">
-            <label [hidden]="emailInput.valid || emailInput.pristine">Email is invalid</label>
+        <div class="col-25 center">
+            <span class="err-msg" [hidden]="emailInput.valid || emailInput.pristine">Email is invalid</span>
         </div>
     </div>
     <div class="row">
@@ -15,8 +15,9 @@
             <label>Subject</label>
         </div>
         <div class="col-50">
-            <input type="text" name="subject" [(ngModel)]="subject" required>
+            <input type="text" name="subject" [(ngModel)]="subject" #subInput="ngModel" required>
         </div>
+        <span class="err-msg" [hidden]="subInput.valid || subInput.pristine">Subject is invalid</span>
     </div>
     <div class="row">
         <div class="col-25">

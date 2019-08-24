@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './side-bar.component.html',
   styleUrls: ['./side-bar.component.css']
 })
-export class SideBarComponent {
+export class SideBarComponent{
 
   @Output() btnClicked = new EventEmitter();
   @Input() curLang: string;

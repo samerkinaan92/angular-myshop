@@ -8,10 +8,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
   animations: [
     trigger('openClose', [
       state('open', style({
-        width: '15%'
+        width: '15%',
       })),
       state('closed', style({
-        width: '0%'
+        width: '0%',
       })),
       transition('open <=> closed', [animate('0.5s')])
     ])
