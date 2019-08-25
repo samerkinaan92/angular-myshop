@@ -8,7 +8,7 @@ export class ConfirmDirective {
   @Input('appConfirm') msg;
   @Output() onConfirm = new EventEmitter();
 
-  constructor(private el: ElementRef) { }
+  constructor() { }
 
   @HostListener('click')
   onclick(){
