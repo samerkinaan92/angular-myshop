@@ -1,27 +1,12 @@
 {
-    "words": [{
-            "en": "Home",
-            "he": "בית"
-        },
-        {
-            "en": "Products",
-            "he": "מוצרים"
-        },
-        {
-            "en": "Cart",
-            "he": "עגלה"
-        },
-        {
-            "en": "About",
-            "he": "אודות"
-        },
-        {
-            "en": "Add product",
-            "he": "הוסף מוצר"
-        },
-        {
-            "en": "Contact",
-            "he": "יצירת קשר"
+    "languages": {
+        "he": {
+            "Home": "בית",
+            "Products": "מוצרים",
+            "Cart": "עגלה",
+            "About": "אודות",
+            "Add product": "הוסף מוצר",
+            "Contact": "יצירת קשר"
         }
-    ]
+    }
 }
