@@ -2,8 +2,7 @@
     <label (click)="ToggleSideBar()"><img class="menu-btn" src="../../../assets/img/menu.svg" alt="menu"></label>
     <div class="right">
         <select class="lang-select" (change)="onLangChange($event.target.value)">
-            <option [value]="'en'">en</option>
-            <option [value]="'he'">he</option>
+            <option *ngFor="let lang of langs" [value]="lang">{{ lang }}</option>
         </select>
         <div *ngIf="userService.getCurUser() == null; then thenBlock else elseBlock"></div>
         <ng-template #thenBlock><button class="log-btn login" (click)="login()">login</button></ng-template>
