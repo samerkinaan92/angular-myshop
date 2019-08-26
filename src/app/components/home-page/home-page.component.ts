@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Component } from '@angular/core';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-home-page',
@@ -20,11 +20,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       ]),
     ])]
 })
-export class HomePageComponent implements OnInit {
+export class HomePageComponent {
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

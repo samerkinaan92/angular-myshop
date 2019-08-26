@@ -1,7 +1,9 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
@@ -11,26 +13,21 @@ import { UserService } from 'src/app/services/user.service';
 export class ProductDetailsComponent implements OnInit {
 
   private product: Product;
-  @Input() productId;
-  @Output() back = new EventEmitter();
-  @Output() editEvent = new EventEmitter();
+  productId: number;
  
-  constructor(private dataService: DataService, private cartService: CartService, private userService: UserService) { }
+  constructor(private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private readonly location: Location) { }
 
   ngOnInit() {
+    this.productId = +this.route.snapshot.paramMap.get('id');
     this.product = this.dataService.getProduct(this.productId);
   }
 
   onBackClick(){
-    this.back.emit();
+    this.location.back();
   }
 
   addToCart(){
     this.cartService.addItem(this.productId);
-  }
-
-  edit(){
-    this.editEvent.emit();
   }
 
 }

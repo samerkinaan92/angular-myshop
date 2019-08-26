@@ -20,22 +20,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class AppComponent {
 
   isOpen: boolean = false;
-  lang: string;
-  curPage: string = 'home';
   
-  changePage(page){
-    this.curPage = page;
-  }
 
   toggleSideBar(){
     this.isOpen = !this.isOpen;
-  }
-
-  login(){
-    this.curPage = 'login';
-  }
-
-  langEvent(lang: string){
-    this.lang = lang;
   }
 }

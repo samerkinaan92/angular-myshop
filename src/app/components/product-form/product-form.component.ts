@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-product-form',
@@ -9,18 +11,20 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 })
 export class ProductFormComponent implements OnInit {
 
-  @Input() productId: number;
   categories: Category[];
   productForm: FormGroup;
-  @Output() savedEvent = new EventEmitter();
+  isNew: boolean;
+  productId: number;
 
-  constructor(private fb: FormBuilder, private dataService: DataService) {
+  constructor(private fb: FormBuilder, private dataService: DataService, private route: ActivatedRoute, private readonly location: Location) {
     this.categories = dataService.getCategories();
   }
 
   ngOnInit(): void {
     let newProduct: Product = { categoryId: "0", imgUrl: '', title: '', price: 1, description: '' };
-    if (this.productId !== -1) {
+    this.isNew = this.route.snapshot.data.new;
+    if (!this.isNew) {
+      this.productId = +this.route.snapshot.paramMap.get('id');
       newProduct = this.dataService.getProduct(this.productId);
     }
     this.productForm = this.fb.group({
@@ -42,7 +46,7 @@ export class ProductFormComponent implements OnInit {
       description: formModel.description
     }
 
-    if (this.productId === -1) {
+    if (this.isNew) {
       this.dataService.addProduct(newProduct);
       this.productForm.reset({
         category: this.categories[0],
@@ -54,7 +58,7 @@ export class ProductFormComponent implements OnInit {
       alert("Product was added.");
     } else {
       this.dataService.editProduct(newProduct, this.productId);
-      this.savedEvent.emit();
+      this.location.back();
     }
   }
 

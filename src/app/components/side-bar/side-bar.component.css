@@ -30,8 +30,6 @@ li {
     list-style-type: none;
 }
 
-
-/* nav {
-    background-color: rgb(135, 197, 233);
-    height: 100%;
-} */
+.active-link {
+    color: rgb(165, 42, 42);
+}

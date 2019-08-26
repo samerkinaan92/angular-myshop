@@ -23,6 +23,10 @@
     margin-top: 6px;
 }
 
+h1 {
+    text-align: center;
+}
+
 
 /* Clear floats after the columns */
 

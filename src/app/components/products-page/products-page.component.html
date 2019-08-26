@@ -1,6 +1,4 @@
 <div [ngSwitch]="page">
-    <app-categories-list *ngSwitchCase="'products'" @onInit (openCategory)=showProducts($event)></app-categories-list>
-    <app-products-list *ngSwitchCase="'products'" [categoryId]='categoryId' (openProductDetails)="openProductDetails($event)"></app-products-list>
-    <app-product-details *ngSwitchCase="'details'" [productId]="productId" (back)="closeDetails()" (editEvent)="editProduct()"></app-product-details>
-    <app-product-form *ngSwitchCase="'edit'" [productId]="productId" (savedEvent)="page='details'"></app-product-form>
+    <app-categories-list @onInit (openCategory)=showProducts($event)></app-categories-list>
+    <app-products-list [categoryId]='categoryId'></app-products-list>
 </div>

@@ -1,12 +1,12 @@
 <nav>
     <div class="links-container">
         <ul>
-            <li (click)="btnClick('home')">{{ 'Home' | localize }}</li>
-            <li (click)="btnClick('products')">{{'Products' | localize }}</li>
-            <li (click)="btnClick('cart')" [hidden]="userService.getCurUser() == null">{{'Cart' | localize}} <span class="blue">{{cartService.getItemsCount()}}</span></li>
-            <li (click)="btnClick('about')">{{'About' | localize }}</li>
-            <li (click)="btnClick('add product')" [hidden]="!userService.hasPermission()">{{'Add product' | localize }}</li>
-            <li (click)="btnClick('contact')">{{'Contact' | localize }}</li>
+            <li routerLink="/home" routerLinkActive="active-link">{{ 'Home' | localize }}</li>
+            <li routerLink="/products" routerLinkActive="active-link">{{'Products' | localize }}</li>
+            <li routerLink="/cart" routerLinkActive="active-link" *ngIf="userService.getCurUser() != null">{{'Cart' | localize}} <span class="blue">{{cartService.getItemsCount()}}</span></li>
+            <li routerLink="/about" routerLinkActive="active-link">{{'About' | localize }}</li>
+            <li routerLink="/add-product" routerLinkActive="active-link" *ngIf="userService.hasPermission()">{{'Add product' | localize }}</li>
+            <li routerLink="/contact" routerLinkActive="active-link">{{'Contact' | localize }}</li>
         </ul>
     </div>
 

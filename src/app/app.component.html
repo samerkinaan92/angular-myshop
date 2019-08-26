@@ -1,7 +1,9 @@
 <div class="app">
-    <app-side-bar (btnClicked)='changePage($event)' [curLang]="lang" [@openClose]="isOpen ? 'open' : 'closed'"></app-side-bar>
+    <app-side-bar (btnClicked)='changePage($event)' [@openClose]="isOpen ? 'open' : 'closed'"></app-side-bar>
     <main>
-        <app-header (sideBarToggle)='toggleSideBar()' (loginEvent)='login()' (langEvent)="langEvent($event)" (logoutEvent)="curPage='home'" class="side-bar open"></app-header>
-        <app-main [curPage]="curPage"></app-main>
+        <app-header (sideBarToggle)='toggleSideBar()' class="side-bar open"></app-header>
+        <div class="container">
+            <router-outlet></router-outlet>
+        </div>
     </main>
 </div>

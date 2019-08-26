@@ -41,3 +41,11 @@ select {
     border-radius: 4px;
     cursor: pointer;
 }
+
+.bold {
+    font-weight: bold;
+}
+
+.username {
+    padding: 8px 16px;
+}

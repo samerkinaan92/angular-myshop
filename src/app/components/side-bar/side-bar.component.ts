@@ -9,13 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class SideBarComponent{
 
-  @Output() btnClicked = new EventEmitter();
-  @Input() curLang: string;
-
   constructor(private cartService: CartService, private userService: UserService) { }
 
-  btnClick(btn) {
-    this.btnClicked.emit(btn);
-  }
 
 }

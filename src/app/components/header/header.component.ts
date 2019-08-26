@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { LocalizeService } from 'src/app/services/localize.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +11,9 @@ import { LocalizeService } from 'src/app/services/localize.service';
 export class HeaderComponent {
 
   @Output() sideBarToggle = new EventEmitter();
-  @Output() loginEvent = new EventEmitter();
-  @Output() logoutEvent = new EventEmitter();
   langs: string[];
 
-  constructor(private userService: UserService, private localizeService: LocalizeService) { 
+  constructor(private userService: UserService, private localizeService: LocalizeService, private router: Router) { 
     this.langs = localizeService.getLangs();
   }
 
@@ -22,13 +21,9 @@ export class HeaderComponent {
     this.sideBarToggle.emit();
   }
 
-  login(){
-    this.loginEvent.emit();
-  }
-
   logout(){
     this.userService.logout();
-    this.logoutEvent.emit();
+    this.router.navigate(['/home']);
   }
 
   onLangChange(lang: string){

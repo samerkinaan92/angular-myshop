@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { MainComponent } from './components/main/main.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { AboutPageComponent } from './components/about-page/about-page.component';
 import { ProductsPageComponent } from './components/products-page/products-page.component';
@@ -27,7 +26,6 @@ import { ConfirmDirective } from './directives/app-confirm.directive';
   declarations: [
     AppComponent,
     HeaderComponent,
-    MainComponent,
     HomePageComponent,
     AboutPageComponent,
     ProductsPageComponent,
