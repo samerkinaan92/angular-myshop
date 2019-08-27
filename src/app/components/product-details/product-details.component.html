@@ -6,8 +6,10 @@
         <h1 class="title">{{ product.title | uppercase}}</h1>
         <p class="description">{{ product.description }}</p>
         <p class="price">{{ product.price | currency}}</p>
-        <button (click)="onBackClick()" class="back-btn">{{'Back' | uppercase}}</button>
-        <button (click)="addToCart()" class="add-btn" [hidden]="userService.getCurUser() == null">{{'Add to Cart' | uppercase}}</button>
-        <button *ngIf="userService.hasPermission()" [routerLink]="['/edit-product', productId]" class="edit-btn">{{'edit' | uppercase}}</button>
+        <div *ngIf="showBtns">
+            <button (click)="onBackClick()" class="back-btn">{{'Back' | uppercase}}</button>
+            <button (click)="addToCart()" class="add-btn" [hidden]="userService.getCurUser() == null">{{'Add to Cart' | uppercase}}</button>
+            <button *ngIf="userService.hasPermission()" [routerLink]="['/edit-product', productId]" class="edit-btn">{{'edit' | uppercase}}</button>
+        </div>
     </div>
 </div>

@@ -14,12 +14,17 @@ export class ProductDetailsComponent implements OnInit {
 
   private product: Product;
   productId: number;
+  showBtns: boolean;
  
   constructor(private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private readonly location: Location) { }
 
   ngOnInit() {
-    this.productId = +this.route.snapshot.paramMap.get('id');
-    this.product = this.dataService.getProduct(this.productId);
+    this.route.paramMap.subscribe((p) => {this.loadProduct(+p.get('id'))});
+  }
+
+  loadProduct(id: number): void{
+    this.product = this.dataService.getProduct(id);
+    this.showBtns = this.route.snapshot.data.showBtns;
   }
 
   onBackClick(){

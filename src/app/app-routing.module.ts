@@ -15,10 +15,11 @@ import { UnsavedDataGuard } from './guards/unsaved-data.guard';
 const routes: Routes = [
   {path: 'home', component: HomePageComponent},
   {path: 'products', component: ProductsPageComponent},
-  {path: 'products/:id', component: ProductDetailsComponent},
+  {path: 'products/:id', component: ProductDetailsComponent, data: {showBtns: true}},
   {path: 'cart', component: CartPageComponent, canActivate: [AuthGuard], children: [{
     path: 'product/:id',
-    component: ProductDetailsComponent
+    component: ProductDetailsComponent,
+    data: {showBtns: false}
   }]},
   {path: 'about', component: AboutPageComponent},
   {path: 'contact', component: ContactFormComponent},

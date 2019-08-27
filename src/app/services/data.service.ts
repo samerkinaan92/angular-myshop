@@ -9,6 +9,7 @@ export class DataService {
   private monUrl = "../../assets/img/monitor.jpg";
   private products: Product[] = [
     {
+      id: 0,
       categoryId: "1",
       imgUrl: this.pcUrl,
       title: "PC1",
@@ -16,6 +17,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 1,
       categoryId: "1",
       imgUrl: this.pcUrl,
       title: "PC1",
@@ -23,6 +25,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 2,
       categoryId: "1",
       imgUrl: this.pcUrl,
       title: "PC1",
@@ -30,6 +33,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 3,
       categoryId: "2",
       imgUrl: this.gpuUrl,
       title: "GPU",
@@ -37,6 +41,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 4,
       categoryId: "2",
       imgUrl: this.gpuUrl,
       title: "GPU",
@@ -44,6 +49,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 5,
       categoryId: "2",
       imgUrl: this.gpuUrl,
       title: "GPU",
@@ -51,6 +57,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 6,
       categoryId: "3",
       imgUrl: this.monUrl,
       title: "monitor",
@@ -58,6 +65,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 7,
       categoryId: "3",
       imgUrl: this.monUrl,
       title: "monitor",
@@ -65,6 +73,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 8,
       categoryId: "3",
       imgUrl: this.monUrl,
       title: "monitor",
@@ -72,6 +81,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 9,
       categoryId: "3",
       imgUrl: this.monUrl,
       title: "monitor",
@@ -79,6 +89,7 @@ export class DataService {
       description: "i7 8GB"
     },
     {
+      id: 10,
       categoryId: "3",
       imgUrl: this.monUrl,
       title: "monitor",

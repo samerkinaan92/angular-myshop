@@ -14,14 +14,14 @@ export class ProductFormComponent implements OnInit {
   categories: Category[];
   productForm: FormGroup;
   isNew: boolean;
-  productId: number;
+  productId: number = -1;
 
   constructor(private fb: FormBuilder, private dataService: DataService, private route: ActivatedRoute, private readonly location: Location) {
     this.categories = dataService.getCategories();
   }
 
   ngOnInit(): void {
-    let newProduct: Product = { categoryId: "0", imgUrl: '', title: '', price: 1, description: '' };
+    let newProduct: Product = {id: -1, categoryId: "0", imgUrl: '', title: '', price: 1, description: '' };
     this.isNew = this.route.snapshot.data.new;
     if (!this.isNew) {
       this.productId = +this.route.snapshot.paramMap.get('id');
@@ -39,6 +39,7 @@ export class ProductFormComponent implements OnInit {
   save() {
     const formModel = this.productForm.value;
     const newProduct: Product = {
+      id: this.productId,
       categoryId: formModel.category.id,
       imgUrl: formModel.img,
       title: formModel.title,
