@@ -11,20 +11,20 @@ export class CartService {
 
   constructor(private dataService: DataService, private userService: UserService) { }
 
-  addItem(productId: number):void {
-    let userName = this.userService.getCurUser();
+  addItem(productId: number): void {
+    const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
         if (cart.user === userName) {
           cart.products.push(productId);
         }
       }
-      this.carts.push({user: userName, products: [productId]});
+      this.carts.push({ user: userName, products: [productId] });
     }
   }
 
-  removeItem(index: number):void {
-    let userName = this.userService.getCurUser();
+  removeItem(index: number): void {
+    const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
         if (cart.user === userName) {
@@ -35,11 +35,11 @@ export class CartService {
   }
 
   getItems(): Product[] {
-    let userName = this.userService.getCurUser();
+    const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
         if (cart.user === userName) {
-          let products: Product[] = [];
+          const products: Product[] = [];
           for (const id of cart.products) {
             products.push(this.dataService.getProduct(id));
           }
@@ -52,7 +52,7 @@ export class CartService {
   }
 
   getItemsCount(): number {
-    let userName = this.userService.getCurUser();
+    const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
         if (cart.user === userName) {

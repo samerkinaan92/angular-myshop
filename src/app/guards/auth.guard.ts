@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivate, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { UserService } from '../services/user.service';
 
 @Injectable({
@@ -15,7 +14,7 @@ export class AuthGuard implements CanActivate {
       if (this.userService.hasPermission()) {
         return true;
       } else {
-        alert("User does not permission! Plaese login to admin");
+        alert('User does not permission! Plaese login to admin');
         const tree: UrlTree = this.router.parseUrl('/login');
         return tree;
       }
@@ -23,7 +22,7 @@ export class AuthGuard implements CanActivate {
       if (this.userService.getCurUser() != null) {
         return true;
       } else {
-        alert("User is not logged in");
+        alert('User is not logged in');
         const tree: UrlTree = this.router.parseUrl('/login');
         return tree;
       }

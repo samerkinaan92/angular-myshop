@@ -13,20 +13,22 @@ import { UnsavedDataGuard } from './guards/unsaved-data.guard';
 
 
 const routes: Routes = [
-  {path: 'home', component: HomePageComponent},
-  {path: 'products', component: ProductsPageComponent},
-  {path: 'products/:id', component: ProductDetailsComponent, data: {showBtns: true}},
-  {path: 'cart', component: CartPageComponent, canActivate: [AuthGuard], children: [{
-    path: 'product/:id',
-    component: ProductDetailsComponent,
-    data: {showBtns: false}
-  }]},
-  {path: 'about', component: AboutPageComponent},
-  {path: 'contact', component: ContactFormComponent},
-  {path: 'add-product', component: ProductFormComponent, data: {new: true}, canDeactivate: [UnsavedDataGuard], canActivate: [AuthGuard]},
-  {path: 'edit-product/:id', component: ProductFormComponent, data: {new: false}, canDeactivate: [UnsavedDataGuard], canActivate: [AuthGuard]},
-  {path: 'login', component: LoginFormComponent},
-  {path: '', redirectTo: 'home', pathMatch: 'full'}
+  { path: 'home', component: HomePageComponent },
+  { path: 'products', component: ProductsPageComponent },
+  { path: 'products/:id', component: ProductDetailsComponent, data: { showBtns: true } },
+  {
+    path: 'cart', component: CartPageComponent, canActivate: [AuthGuard], children: [{
+      path: 'product/:id',
+      component: ProductDetailsComponent,
+      data: { showBtns: false }
+    }]
+  },
+  { path: 'about', component: AboutPageComponent },
+  { path: 'contact', component: ContactFormComponent },
+  { path: 'add-product', component: ProductFormComponent, data: { new: true }, canDeactivate: [UnsavedDataGuard], canActivate: [AuthGuard] },
+  { path: 'edit-product/:id', component: ProductFormComponent, data: { new: false }, canDeactivate: [UnsavedDataGuard], canActivate: [AuthGuard] },
+  { path: 'login', component: LoginFormComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({

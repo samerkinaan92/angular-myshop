@@ -14,8 +14,8 @@ export class ContactFormComponent {
 
   constructor() { }
 
-  send(){
-    console.log("Email:", this.email, ",Subject:", this.subject, ",msg:", this.msg);
+  send() {
+    console.log('Email:', this.email, ',Subject:', this.subject, ',msg:', this.msg);
     this.isSent = true;
   }
 

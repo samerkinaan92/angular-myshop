@@ -7,12 +7,12 @@ import { Component, OnInit, ContentChildren, ElementRef, QueryList, AfterContent
 })
 export class SocialLinksComponent implements AfterContentInit {
 
-  
+
   @ContentChildren('link') links: QueryList<ElementRef>;
 
   constructor() { }
 
-  ngAfterContentInit(){
+  ngAfterContentInit() {
     this.links.forEach((link) => {
       link.nativeElement.setAttribute('target', '_blank');
     });

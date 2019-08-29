@@ -10,15 +10,15 @@ export class LoginFormComponent {
 
   username: string;
   password: string;
-  loginMsg = ""
+  loginMsg = ''
 
   constructor(private userService: UserService) { }
 
-  login(){
-    if(this.userService.login(this.username, this.password)){
-      this.loginMsg = "Logged in succesfully";
-    }else{
-      this.loginMsg = "username or password are wrong";
+  login() {
+    if (this.userService.login(this.username, this.password)) {
+      this.loginMsg = 'Logged in succesfully';
+    } else {
+      this.loginMsg = 'username or password are wrong';
     }
   }
 

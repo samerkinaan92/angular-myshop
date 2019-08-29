@@ -13,20 +13,20 @@ export class HeaderComponent {
   @Output() sideBarToggle = new EventEmitter();
   langs: string[];
 
-  constructor(private userService: UserService, private localizeService: LocalizeService, private router: Router) { 
+  constructor(private userService: UserService, private localizeService: LocalizeService, private router: Router) {
     this.langs = localizeService.getLangs();
   }
 
-  ToggleSideBar(){
+  ToggleSideBar() {
     this.sideBarToggle.emit();
   }
 
-  logout(){
+  logout() {
     this.userService.logout();
     this.router.navigate(['/home']);
   }
 
-  onLangChange(lang: string){
+  onLangChange(lang: string) {
     this.localizeService.setLang(lang);
   }
 }

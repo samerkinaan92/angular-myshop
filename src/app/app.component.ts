@@ -20,9 +20,9 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class AppComponent {
 
   isOpen: boolean = false;
-  
 
-  toggleSideBar(){
+
+  toggleSideBar() {
     this.isOpen = !this.isOpen;
   }
 }

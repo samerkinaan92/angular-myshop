@@ -11,8 +11,8 @@ export class ConfirmDirective {
   constructor() { }
 
   @HostListener('click')
-  onclick(){
-    if(confirm(this.msg)){
+  onclick() {
+    if (confirm(this.msg)) {
       this.onConfirm.emit();
     }
   }

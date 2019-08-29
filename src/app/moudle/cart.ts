@@ -1,4 +1,4 @@
-class Cart{
+class Cart {
     user: string;
     products: number[];
 }

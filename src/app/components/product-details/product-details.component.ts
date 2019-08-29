@@ -12,27 +12,26 @@ import { Location } from '@angular/common';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  private product: Product;
+  product: Product;
   productId: number;
   showBtns: boolean;
- 
+
   constructor(private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private readonly location: Location) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((p) => {this.loadProduct(+p.get('id'))});
+    this.route.paramMap.subscribe((p) => { this.loadProduct(+p.get('id')) });
   }
 
-  loadProduct(id: number): void{
+  loadProduct(id: number): void {
     this.product = this.dataService.getProduct(id);
     this.showBtns = this.route.snapshot.data.showBtns;
   }
 
-  onBackClick(){
+  onBackClick() {
     this.location.back();
   }
 
-  addToCart(){
+  addToCart() {
     this.cartService.addItem(this.productId);
   }
-
 }

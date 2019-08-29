@@ -10,6 +10,4 @@ import { UserService } from 'src/app/services/user.service';
 export class SideBarComponent{
 
   constructor(private cartService: CartService, private userService: UserService) { }
-
-
 }

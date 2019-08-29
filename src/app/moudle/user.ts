@@ -1,9 +1,9 @@
-enum UserType{
-    admin, 
+enum UserType {
+    admin,
     user
 }
 
-class User{
+class User {
     type: UserType;
     username: string;
     password: string;

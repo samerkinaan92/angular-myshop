@@ -18,7 +18,7 @@ export class ProductsListComponent implements OnInit {
     this.products = this.dataService.getProducts();
   }
 
-  openProduct(productId: number){
+  openProduct(productId: number) {
     this.openProductDetails.emit(productId);
   }
 

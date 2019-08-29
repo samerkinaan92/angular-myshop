@@ -21,7 +21,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let newProduct: Product = {id: -1, categoryId: "0", imgUrl: '', title: '', price: 1, description: '' };
+    let newProduct: Product = { id: -1, categoryId: '0', imgUrl: '', title: '', price: 1, description: '' };
     this.isNew = this.route.snapshot.data.new;
     if (!this.isNew) {
       this.productId = +this.route.snapshot.paramMap.get('id');
@@ -56,7 +56,7 @@ export class ProductFormComponent implements OnInit {
         price: 1,
         description: ''
       });
-      alert("Product was added.");
+      alert('Product was added successfully.');
     } else {
       this.dataService.editProduct(newProduct, this.productId);
       this.location.back();

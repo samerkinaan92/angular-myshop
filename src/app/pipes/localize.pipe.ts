@@ -7,7 +7,7 @@ import { LocalizeService } from '../services/localize.service';
 })
 export class LocalizePipe implements PipeTransform {
 
-  constructor(private localizeService: LocalizeService){}
+  constructor(private localizeService: LocalizeService) { }
 
   transform(value: string): string {
     return this.localizeService.getLocalizedStr(value);

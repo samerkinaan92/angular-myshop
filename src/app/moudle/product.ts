@@ -1,4 +1,4 @@
-class Product{
+class Product {
     id: number;
     categoryId: string;
     imgUrl: string;

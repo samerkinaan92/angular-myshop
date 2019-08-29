@@ -21,7 +21,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class ProductsPageComponent implements OnInit {
 
-  page: string = "products";
+  page: string = 'products';
   products: Product[];
   categoryId: string;
   productId: number;
@@ -30,7 +30,7 @@ export class ProductsPageComponent implements OnInit {
 
   ngOnInit() {
     this.products = this.dataService.getProducts();
-    this.categoryId = "0";
+    this.categoryId = '0';
   }
 
   showProducts(id){
@@ -38,15 +38,15 @@ export class ProductsPageComponent implements OnInit {
   }
 
   openProductDetails(productId){
-    this.page = "details";
+    this.page = 'details';
     this.productId = productId;
   }
 
   closeDetails(){
-    this.page = "products";
+    this.page = 'products';
   }
 
   editProduct(){
-    this.page = "edit";
+    this.page = 'edit';
   }
 }

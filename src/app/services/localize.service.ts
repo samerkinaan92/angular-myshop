@@ -12,25 +12,25 @@ export class LocalizeService {
   constructor() { }
 
   //returns a list of available languages
-  getLangs(): string[]{
+  getLangs(): string[] {
     return this.langs;
   }
 
-  setLang(lang: string): void{
-    if(languages.hasOwnProperty(lang)){
+  setLang(lang: string): void {
+    if (languages.hasOwnProperty(lang)) {
       this.words = languages[lang];
-    }else{
+    } else {
       //if property is not found it defaults to english
       this.words = null;
     }
   }
 
-  getLocalizedStr(key: string): string{
-    if(this.words == null){
+  getLocalizedStr(key: string): string {
+    if (this.words == null) {
       return key;
-    }else if(this.words.hasOwnProperty(key)){
+    } else if (this.words.hasOwnProperty(key)) {
       return this.words[key];
-    }else{
+    } else {
       return key;
     }
   }

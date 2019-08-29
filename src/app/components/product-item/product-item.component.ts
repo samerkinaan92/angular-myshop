@@ -32,10 +32,7 @@ export class ProductItemComponent implements OnInit {
     this.product = this.dataService.getProduct(this.productId);
   }
 
-  addToCart(){
+  addToCart() {
     this.cartService.addItem(this.productId);
   }
-
-  
-
 }

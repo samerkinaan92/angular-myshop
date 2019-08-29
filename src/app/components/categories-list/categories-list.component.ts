@@ -7,7 +7,7 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./categories-list.component.css']
 })
 export class CategoriesListComponent implements OnInit {
-  
+
   @Output() openCategory = new EventEmitter();
 
   categories: Category[];
@@ -18,7 +18,7 @@ export class CategoriesListComponent implements OnInit {
     this.categories = this.dataService.getCategories();
   }
 
-  categoryClicked(id){
+  categoryClicked(id) {
     this.openCategory.emit(id);
   }
 
