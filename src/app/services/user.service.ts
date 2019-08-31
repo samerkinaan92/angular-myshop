@@ -10,6 +10,8 @@ export class UserService {
   constructor() { }
 
   getCurUser() {
+    console.log('getCurUser()');
+
     if (this.curUser == null) {
       return null;
     } else {
@@ -18,6 +20,8 @@ export class UserService {
   }
 
   hasPermission() {
+    console.log('hasPermission()');
+
     if (this.curUser != null && this.curUser.type === 0) {
       return true;
     } else {
