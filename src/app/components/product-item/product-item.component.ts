@@ -23,24 +23,16 @@ import { Subscription } from 'rxjs';
       ]),
     ])]
 })
-export class ProductItemComponent implements OnInit, OnDestroy {
+export class ProductItemComponent implements OnInit {
 
   product: Product;
   @Input() productId: number;
-  curUser: string;
-  userSub: Subscription;
+  @Input() curUser: string;
 
-  constructor(private dataService: DataService, private cartService: CartService, private userService: UserService) { }
+  constructor(private dataService: DataService, private cartService: CartService) { }
 
   ngOnInit() {
     this.product = this.dataService.getProduct(this.productId);
-    this.userSub = this.userService.getCurUserSubject().subscribe((name) => {
-      this.curUser = name;
-    })
-  }
-
-  ngOnDestroy(): void {
-    this.userSub.unsubscribe();
   }
 
   addToCart() {

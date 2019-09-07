@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { LocalizePipe } from './pipes/localize.pipe';
 import { ConfirmDirective } from './directives/app-confirm.directive';
+import { logInterceptor } from './interceptors/log-interceptor';
 
 @NgModule({
   declarations: [
@@ -47,9 +49,10 @@ import { ConfirmDirective } from './directives/app-confirm.directive';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: logInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

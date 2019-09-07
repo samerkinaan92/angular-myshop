@@ -1,6 +1,6 @@
 <div class="container">
     <div *ngFor="let product of products; index as productId">
-        <app-product-item *ngIf="categoryId === '0'; else definedCat" [productId]="productId" (click)="openProduct(productId)"></app-product-item>
+        <app-product-item *ngIf="categoryId === '0'; else definedCat" [productId]="productId" [curUser]="curUser" (click)="openProduct(productId)"></app-product-item>
         <app-product-item #definedCat *ngIf="product.categoryId === categoryId" [productId]="productId"></app-product-item>
     </div>
 </div>
