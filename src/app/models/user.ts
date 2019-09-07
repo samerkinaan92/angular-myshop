@@ -1,9 +1,9 @@
-enum UserType {
+export enum UserType {
     admin,
     user
 }
 
-class User {
+export class User {
     type: UserType;
     username: string;
     password: string;

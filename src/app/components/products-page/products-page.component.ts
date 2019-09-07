@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-products-page',
@@ -21,10 +22,8 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 })
 export class ProductsPageComponent implements OnInit {
 
-  page: string = 'products';
   products: Product[];
   categoryId: string;
-  productId: number;
 
   constructor(private dataService: DataService) { }
 
@@ -35,18 +34,5 @@ export class ProductsPageComponent implements OnInit {
 
   showProducts(id){
     this.categoryId = id;
-  }
-
-  openProductDetails(productId){
-    this.page = 'details';
-    this.productId = productId;
-  }
-
-  closeDetails(){
-    this.page = 'products';
-  }
-
-  editProduct(){
-    this.page = 'edit';
   }
 }

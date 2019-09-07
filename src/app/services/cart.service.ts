@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
 import { UserService } from './user.service';
+import { Subject, BehaviorSubject } from 'rxjs';
+import { Cart } from '../models/cart';
+import { Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root'
@@ -8,15 +11,27 @@ import { UserService } from './user.service';
 export class CartService {
 
   private carts: Cart[] = [];
+  private subjectItemCount = new BehaviorSubject<number>(0);
 
-  constructor(private dataService: DataService, private userService: UserService) { }
+  constructor(private dataService: DataService, private userService: UserService) {
+    userService.getCurUserSubject().subscribe(value => {
+      const num = this.getItemsCount();
+      this.subjectItemCount.next(num);
+    });
+  }
 
   addItem(productId: number): void {
+    console.log('addItem()');
+
     const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
         if (cart.user === userName) {
           cart.products.push(productId);
+          console.log(cart.products.length);
+          this.subjectItemCount.next(cart.products.length);
+
+          break;
         }
       }
       this.carts.push({ user: userName, products: [productId] });
@@ -24,11 +39,15 @@ export class CartService {
   }
 
   removeItem(index: number): void {
+    console.log('removeItem()');
     const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
         if (cart.user === userName) {
           cart.products.splice(index, 1);
+          console.log(cart.products.length);
+          this.subjectItemCount.next(cart.products.length);
+          break;
         }
       }
     }
@@ -53,7 +72,7 @@ export class CartService {
 
   getItemsCount(): number {
     console.log("getItemsCount");
-    
+
     const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
@@ -63,5 +82,11 @@ export class CartService {
       }
     }
     return 0;
+  }
+
+  getItemsCountSubject(): Subject<number> {
+    const num = this.getItemsCount();
+    this.subjectItemCount.next(num);
+    return this.subjectItemCount;
   }
 }

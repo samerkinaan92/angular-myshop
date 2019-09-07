@@ -1,4 +1,4 @@
 <div [ngSwitch]="page">
-    <app-categories-list @onInit (openCategory)=showProducts($event)></app-categories-list>
-    <app-products-list [categoryId]='categoryId'></app-products-list>
+    <app-categories-list @onInit (openCategory)="showProducts($event)"></app-categories-list>
+    <app-products-list [categoryId]="categoryId"></app-products-list>
 </div>

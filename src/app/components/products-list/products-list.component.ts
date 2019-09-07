@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-products-list',
@@ -10,16 +11,10 @@ export class ProductsListComponent implements OnInit {
 
   @Input() categoryId: string;
   products: Product[];
-  @Output() openProductDetails = new EventEmitter();
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
     this.products = this.dataService.getProducts();
   }
-
-  openProduct(productId: number) {
-    this.openProductDetails.emit(productId);
-  }
-
 }

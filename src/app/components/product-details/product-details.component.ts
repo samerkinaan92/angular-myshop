@@ -1,25 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Product } from 'src/app/models/product';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   product: Product;
   productId: number;
   showBtns: boolean;
+  curUser: string;
+  routeSub: Subscription;
+  userSub: Subscription;
 
   constructor(private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private readonly location: Location) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe((p) => { this.loadProduct(+p.get('id')) });
+    this.routeSub = this.route.paramMap.subscribe((p) => { this.loadProduct(+p.get('id')) });
+    this.userSub = this.userService.getCurUserSubject().subscribe((userName) => {
+      this.curUser = userName;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.routeSub.unsubscribe();
+    this.userSub.unsubscribe();
   }
 
   loadProduct(id: number): void {

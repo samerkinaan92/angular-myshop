@@ -3,6 +3,8 @@ import { DataService } from 'src/app/services/data.service';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Category } from 'src/app/models/category';
+import { Product } from 'src/app/models/product';
 
 @Component({
   selector: 'app-product-form',

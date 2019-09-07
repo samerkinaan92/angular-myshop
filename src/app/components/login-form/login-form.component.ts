@@ -10,7 +10,7 @@ export class LoginFormComponent {
 
   username: string;
   password: string;
-  loginMsg = ''
+  loginMsg = '';
 
   constructor(private userService: UserService) { }
 

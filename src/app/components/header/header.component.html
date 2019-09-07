@@ -1,13 +1,12 @@
 <header>
     <label (click)="ToggleSideBar()"><img class="menu-btn" src="../../../assets/img/menu.svg" alt="menu"></label>
-    <span class="bold username">{{ userService.getCurUser() }}</span>
+    <span class="bold username">{{ userName }}</span>
     <div class="right">
         <select class="lang-select" (change)="onLangChange($event.target.value)">
             <option *ngFor="let lang of langs" [value]="lang">{{ lang }}</option>
         </select>
-        <div *ngIf="userService.getCurUser() == null; then thenBlock else elseBlock"></div>
+        <div *ngIf="userName == null; then thenBlock else elseBlock"></div>
         <ng-template #thenBlock><button class="log-btn login" routerLink="/login">login</button></ng-template>
         <ng-template #elseBlock><button class="log-btn logout" (click)="logout()">logout</button></ng-template>
     </div>
 </header>
-<img class="header-img" src="../../assets/img/background.png" alt="background image">

@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-categories-list',
