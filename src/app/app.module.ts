@@ -23,6 +23,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { LocalizePipe } from './pipes/localize.pipe';
 import { ConfirmDirective } from './directives/app-confirm.directive';
 import { logInterceptor } from './interceptors/log-interceptor';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { logInterceptor } from './interceptors/log-interceptor';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: logInterceptor, multi: true}],
   bootstrap: [AppComponent]

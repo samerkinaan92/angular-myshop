@@ -1,9 +1,11 @@
-<div class="app">
-    <app-side-bar (btnClicked)='changePage($event)' [@openClose]="isOpen ? 'open' : 'closed'"></app-side-bar>
-    <main>
-        <app-header (sideBarToggle)='toggleSideBar()' class="side-bar open"></app-header>
+<app-header (sideBarToggle)="sidenav.toggle()"></app-header>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav>
+        <app-side-bar></app-side-bar>
+    </mat-sidenav>
+    <mat-sidenav-content>
         <div class="container">
             <router-outlet></router-outlet>
         </div>
-    </main>
-</div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

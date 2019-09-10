@@ -1,12 +1,12 @@
 <nav>
     <div class="links-container">
         <ul>
-            <li routerLink="/home" routerLinkActive="active-link">{{ 'Home' | localize }}</li>
-            <li routerLink="/products" routerLinkActive="active-link">{{'Products' | localize }}</li>
-            <li routerLink="/cart" routerLinkActive="active-link" *ngIf="userName != null">{{'Cart' | localize}} <span class="blue">{{cartCount}}</span></li>
-            <li routerLink="/about" routerLinkActive="active-link">{{'About' | localize }}</li>
-            <li routerLink="/add-product" routerLinkActive="active-link" *ngIf="hasPerm">{{'Add product' | localize }}</li>
-            <li routerLink="/contact" routerLinkActive="active-link">{{'Contact' | localize }}</li>
+            <li routerLink="/home" routerLinkActive="active-link">{{ 'Home' | localize:lang }}</li>
+            <li routerLink="/products" routerLinkActive="active-link">{{'Products' | localize:lang }}</li>
+            <li routerLink="/cart" routerLinkActive="active-link" *ngIf="userName != null">{{'Cart' | localize:lang}} <mat-icon [matBadge]="cartCount">shopping_cart</mat-icon></li>
+            <li routerLink="/about" routerLinkActive="active-link">{{'About' | localize:lang }}</li>
+            <li routerLink="/add-product" routerLinkActive="active-link" *ngIf="hasPerm">{{'Add product' | localize:lang }}</li>
+            <li routerLink="/contact" routerLinkActive="active-link">{{'Contact' | localize:lang }}</li>
         </ul>
     </div>
 

@@ -21,14 +21,11 @@ export class CartService {
   }
 
   addItem(productId: number): void {
-    console.log('addItem()');
-
     const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {
         if (cart.user === userName) {
           cart.products.push(productId);
-          console.log(cart.products.length);
           this.subjectItemCount.next(cart.products.length);
 
           break;
@@ -45,7 +42,6 @@ export class CartService {
       for (const cart of this.carts) {
         if (cart.user === userName) {
           cart.products.splice(index, 1);
-          console.log(cart.products.length);
           this.subjectItemCount.next(cart.products.length);
           break;
         }
@@ -71,8 +67,6 @@ export class CartService {
   }
 
   getItemsCount(): number {
-    console.log("getItemsCount");
-
     const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {

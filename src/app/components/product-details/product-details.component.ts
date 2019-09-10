@@ -18,8 +18,10 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   productId: number;
   showBtns: boolean;
   curUser: string;
+  hasPermission: boolean = false;
   routeSub: Subscription;
   userSub: Subscription;
+  permissionSub: Subscription;
 
   constructor(private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private readonly location: Location) { }
 
@@ -28,11 +30,16 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
     this.userSub = this.userService.getCurUserSubject().subscribe((userName) => {
       this.curUser = userName;
     });
+
+    this.permissionSub = this.userService.hasPermissionSub().subscribe((permission => {
+      this.hasPermission = permission;
+    }));
   }
 
   ngOnDestroy(): void {
     this.routeSub.unsubscribe();
     this.userSub.unsubscribe();
+    this.permissionSub .unsubscribe();
   }
 
   loadProduct(id: number): void {

@@ -9,7 +9,7 @@
         <div *ngIf="showBtns">
             <button (click)="onBackClick()" class="back-btn">{{'Back' | uppercase}}</button>
             <button (click)="addToCart()" class="add-btn" [hidden]="curUser == null">{{'Add to Cart' | uppercase}}</button>
-            <button *ngIf="userService.hasPermission()" [routerLink]="['/edit-product', productId]" class="edit-btn">{{'edit' | uppercase}}</button>
+            <button *ngIf="hasPermission" [routerLink]="['/edit-product', productId]" class="edit-btn">{{'edit' | uppercase}}</button>
         </div>
     </div>
 </div>

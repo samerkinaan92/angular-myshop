@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { languages } from '../../assets/data/lang.json'
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { languages } from '../../assets/data/lang.json'
 export class LocalizeService {
 
   private langs: string[] = ['en', 'he'];
-  private words: object = null;
+  private lang: BehaviorSubject<string> = new BehaviorSubject<string>('en');
 
   constructor() { }
 
@@ -16,22 +17,26 @@ export class LocalizeService {
     return this.langs;
   }
 
+  getLang(): BehaviorSubject<string> {
+    return this.lang;
+  }
+
   setLang(lang: string): void {
-    if (languages.hasOwnProperty(lang)) {
-      this.words = languages[lang];
-    } else {
-      //if property is not found it defaults to english
-      this.words = null;
+    for (const item of this.langs) {
+      if (item === lang) {
+        this.lang.next(lang);
+        break;
+      }
     }
   }
 
-  getLocalizedStr(key: string): string {
-    if (this.words == null) {
-      return key;
-    } else if (this.words.hasOwnProperty(key)) {
-      return this.words[key];
-    } else {
+  getLocalizedStr(key: string, lang: string): string {
+    console.log("getLocalizedStr");
+    
+    if(lang === 'en' || lang === undefined){
       return key;
     }
+    const words = languages[lang];
+    return words[key];
   }
 }
