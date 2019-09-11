@@ -43,7 +43,9 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   }
 
   loadProduct(id: number): void {
-    this.product = this.dataService.getProduct(id);
+    this.dataService.getProduct(id).then(product => {
+      this.product = product;
+    });
     this.showBtns = this.route.snapshot.data.showBtns;
   }
 

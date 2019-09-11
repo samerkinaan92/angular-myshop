@@ -16,7 +16,9 @@ export class CategoriesListComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.categories = this.dataService.getCategories();
+    this.dataService.getCategories().then(categories => {
+      this.categories = categories;
+    });
   }
 
   categoryClicked(id) {

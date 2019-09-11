@@ -1,10 +1,7 @@
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { DataService } from 'src/app/services/data.service';
 import { CartService } from 'src/app/services/cart.service';
-import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/app/models/product';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-product-item',
@@ -23,19 +20,15 @@ import { Subscription } from 'rxjs';
       ]),
     ])]
 })
-export class ProductItemComponent implements OnInit {
+export class ProductItemComponent {
 
-  product: Product;
-  @Input() productId: number;
+  @Input() product: Product;
   @Input() curUser: string;
 
-  constructor(private dataService: DataService, private cartService: CartService) { }
+  constructor(private cartService: CartService) { }
 
-  ngOnInit() {
-    this.product = this.dataService.getProduct(this.productId);
-  }
 
   addToCart() {
-    this.cartService.addItem(this.productId);
+    this.cartService.addItem(this.product.id);
   }
 }

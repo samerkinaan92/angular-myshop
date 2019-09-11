@@ -25,10 +25,9 @@ export class ProductsPageComponent implements OnInit {
   products: Product[];
   categoryId: string;
 
-  constructor(private dataService: DataService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.products = this.dataService.getProducts();
     this.categoryId = '0';
   }
 

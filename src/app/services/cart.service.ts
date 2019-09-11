@@ -56,7 +56,9 @@ export class CartService {
         if (cart.user === userName) {
           const products: Product[] = [];
           for (const id of cart.products) {
-            products.push(this.dataService.getProduct(id));
+            this.dataService.getProduct(id).then(product => {
+              products.push(product);
+            });
           }
           return products;
         }

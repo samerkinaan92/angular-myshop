@@ -19,7 +19,9 @@ export class ProductFormComponent implements OnInit {
   productId: number = -1;
 
   constructor(private fb: FormBuilder, private dataService: DataService, private route: ActivatedRoute, private readonly location: Location) {
-    this.categories = dataService.getCategories();
+    dataService.getCategories().then(categories => {
+      this.categories = categories;
+    });
   }
 
   ngOnInit(): void {
@@ -27,7 +29,9 @@ export class ProductFormComponent implements OnInit {
     this.isNew = this.route.snapshot.data.new;
     if (!this.isNew) {
       this.productId = +this.route.snapshot.paramMap.get('id');
-      newProduct = this.dataService.getProduct(this.productId);
+      this.dataService.getProduct(this.productId).then(product => {
+        newProduct = product;
+      });
     }
     this.productForm = this.fb.group({
       category: [this.categories[parseInt(newProduct.categoryId) - 1], Validators.required],

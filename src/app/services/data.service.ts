@@ -35,16 +35,29 @@ export class DataService {
       .catch();
   }
 
-  getProducts(): Product[] {
-    return this.products;
+  getProducts(): Promise<Product[]> {
+    return this.http.get('../../assets/data/products.json')
+    .pipe(
+      map(json => json as Product[])
+    )
+    .toPromise();
   }
 
-  getCategories(): Category[] {
-    return this.categories;
+  getCategories(): Promise<Category[]> {
+    return this.http.get('../../assets/data/categories.json')
+    .pipe(
+      map(json => json as Category[])
+    )
+    .toPromise();
   }
 
-  getProduct(id: number): Product {
-    return this.products[id];
+  getProduct(id: number): Promise<Product> {
+    return this.http.get('../../assets/data/products.json')
+    .pipe(
+      map(json => json as Product[]),
+      map(products => products.find(product => product.id === id))
+    )
+    .toPromise();
   }
 
   addProduct(product: Product): void {
