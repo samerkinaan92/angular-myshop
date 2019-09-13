@@ -31,8 +31,6 @@ export class LocalizeService {
   }
 
   getLocalizedStr(key: string, lang: string): string {
-    console.log("getLocalizedStr");
-    
     if(lang === 'en' || lang === undefined){
       return key;
     }

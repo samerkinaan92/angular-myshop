@@ -1,15 +1,14 @@
 <div class="container">
-    <div class="col-50">
-        <img [src]="product.imgUrl" alt="product">
+    <div class="start">
+        <img [src]="product?.imgUrl" alt="product">
     </div>
-    <div class="col-50 center">
-        <h1 class="title">{{ product.title | uppercase}}</h1>
-        <p class="description">{{ product.description }}</p>
-        <p class="price">{{ product.price | currency}}</p>
-        <div *ngIf="showBtns">
-            <button (click)="onBackClick()" class="back-btn">{{'Back' | uppercase}}</button>
+    <div class="end cloumn">
+        <h1 class="title">{{ product?.title | uppercase}}</h1>
+        <p class="description">{{ product?.description }}</p>
+        <p class="price">{{ product?.price | currency}}</p>
+        <div *ngIf="showBtns" class="bottom">
             <button (click)="addToCart()" class="add-btn" [hidden]="curUser == null">{{'Add to Cart' | uppercase}}</button>
-            <button *ngIf="hasPermission" [routerLink]="['/edit-product', productId]" class="edit-btn">{{'edit' | uppercase}}</button>
+            <button *ngIf="hasPermission" [routerLink]="['/edit-product', product?.id]" class="edit-btn">{{'edit' | uppercase}}</button>
         </div>
     </div>
 </div>

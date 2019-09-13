@@ -20,7 +20,7 @@ export class CartService {
     });
   }
 
-  addItem(productId: number): void {
+  addItem(productId: string): void {
     const userName = this.userService.getCurUser();
     if (userName != null) {
       for (const cart of this.carts) {

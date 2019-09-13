@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
 export class ProductDetailsComponent implements OnInit, OnDestroy {
 
   product: Product;
-  productId: number;
+  productId: string;
   showBtns: boolean;
   curUser: string;
   hasPermission: boolean = false;
@@ -26,7 +26,7 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   constructor(private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private readonly location: Location) { }
 
   ngOnInit() {
-    this.routeSub = this.route.paramMap.subscribe((p) => { this.loadProduct(+p.get('id')) });
+    this.routeSub = this.route.paramMap.subscribe((p) => { this.loadProduct(p.get('id')) });
     this.userSub = this.userService.getCurUserSubject().subscribe((userName) => {
       this.curUser = userName;
     });
@@ -39,18 +39,14 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.routeSub.unsubscribe();
     this.userSub.unsubscribe();
-    this.permissionSub .unsubscribe();
+    this.permissionSub.unsubscribe();
   }
 
-  loadProduct(id: number): void {
+  loadProduct(id: string): void {
     this.dataService.getProduct(id).then(product => {
       this.product = product;
     });
     this.showBtns = this.route.snapshot.data.showBtns;
-  }
-
-  onBackClick() {
-    this.location.back();
   }
 
   addToCart() {

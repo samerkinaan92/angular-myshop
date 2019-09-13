@@ -16,30 +16,14 @@ export class ProductFormComponent implements OnInit {
   categories: Category[];
   productForm: FormGroup;
   isNew: boolean;
-  productId: number = -1;
+  productId: string = null;
 
   constructor(private fb: FormBuilder, private dataService: DataService, private route: ActivatedRoute, private readonly location: Location) {
-    dataService.getCategories().then(categories => {
-      this.categories = categories;
-    });
   }
 
   ngOnInit(): void {
-    let newProduct: Product = { id: -1, categoryId: '0', imgUrl: '', title: '', price: 1, description: '' };
-    this.isNew = this.route.snapshot.data.new;
-    if (!this.isNew) {
-      this.productId = +this.route.snapshot.paramMap.get('id');
-      this.dataService.getProduct(this.productId).then(product => {
-        newProduct = product;
-      });
-    }
-    this.productForm = this.fb.group({
-      category: [this.categories[parseInt(newProduct.categoryId) - 1], Validators.required],
-      img: [newProduct.imgUrl, Validators.required],
-      title: [newProduct.title, Validators.required],
-      price: [newProduct.price, [Validators.required, Validators.min(0.01)]],
-      description: newProduct.description
-    });
+    this.loadNewForm();
+    this.loadData();
   }
 
   save() {
@@ -65,7 +49,42 @@ export class ProductFormComponent implements OnInit {
       alert('Product was added successfully.');
     } else {
       this.dataService.editProduct(newProduct, this.productId);
+      this.productForm.reset({
+        category: this.categories[0],
+        img: '',
+        title: '',
+        price: 1,
+        description: ''
+      });
+      alert('Product was edited successfully.');
       this.location.back();
+    }
+  }
+
+  loadNewForm(): void {
+    this.productForm = this.fb.group({
+      category: ['', Validators.required],
+      img: ['', Validators.required],
+      title: ['', Validators.required],
+      price: [1, [Validators.required, Validators.min(0.01)]],
+      description: ''
+    });
+  }
+
+  async loadData(): Promise<void> {
+    this.categories = await this.dataService.getCategories();
+    let newProduct: Product;
+    this.isNew = this.route.snapshot.data.new;
+    if (!this.isNew) {
+      this.productId = this.route.snapshot.paramMap.get('id');
+      newProduct = await this.dataService.getProduct(this.productId);
+      this.productForm = this.fb.group({
+        category: [this.categories.find(category => category.id === newProduct.categoryId), Validators.required],
+        img: [newProduct.imgUrl, Validators.required],
+        title: [newProduct.title, Validators.required],
+        price: [newProduct.price, [Validators.required, Validators.min(0.01)]],
+        description: newProduct.description
+      });
     }
   }
 
