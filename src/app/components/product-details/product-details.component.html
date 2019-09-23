@@ -8,7 +8,7 @@
         <p class="price">{{ product?.price | currency}}</p>
         <div *ngIf="showBtns" class="bottom">
             <button (click)="addToCart()" class="add-btn" [hidden]="curUser == null">{{'Add to Cart' | uppercase}}</button>
-            <button *ngIf="hasPermission" [routerLink]="['/edit-product', product?.id]" class="edit-btn">{{'edit' | uppercase}}</button>
+            <button *ngIf="hasPermission" [routerLink]="['/edit-product', product?._id]" class="edit-btn">{{'edit' | uppercase}}</button>
         </div>
     </div>
 </div>

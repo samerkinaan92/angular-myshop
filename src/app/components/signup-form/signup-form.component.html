@@ -1,9 +1,9 @@
-<h1>Login</h1>
+<h1>Sign Up</h1>
 <div class="center">
-    <form (ngSubmit)="login()" #loginForm="ngForm">
+    <form (ngSubmit)="signup()" #signupForm="ngForm">
         <div class="row">
             <div class="col-25">
-                <label>username</label>
+                <label>Username</label>
             </div>
             <div class="col-75">
                 <input type="text" name="username" [(ngModel)]="username" required minlength="3">
@@ -11,15 +11,22 @@
         </div>
         <div class="row">
             <div class="col-25">
-                <Label>password</Label>
+                <Label>Password</Label>
             </div>
             <div class="col-75">
                 <input type="password" name="password" [(ngModel)]="password" required minlength="3">
             </div>
         </div>
+        <div class="row">
+            <div class="col-25">
+                <Label>Confirm Password</Label>
+            </div>
+            <div class="col-75">
+                <input type="password" name="confirmPassword" [(ngModel)]="confirmPassword" required minlength="3">
+            </div>
+        </div>
         <div class="row space-between">
-            <a [routerLink]="['/signup']">Signup</a>
-            <input [disabled]="!loginForm.form.valid" type="submit" value="login">
+            <input [disabled]="!signupForm.form.valid" type="submit" value="Sign Up">
         </div>
     </form>
 </div>

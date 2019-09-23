@@ -1,6 +1,6 @@
 <div class="container">
     <div *ngFor="let product of products; index as productId">
         <app-product-item *ngIf="categoryId === '0'" [product]="product" [curUser]="curUser"></app-product-item>
-        <app-product-item *ngIf="product.categoryId === categoryId" [product]="product"></app-product-item>
+        <app-product-item *ngIf="product.categoryId === categoryId" [product]="product" [curUser]="curUser"></app-product-item>
     </div>
 </div>

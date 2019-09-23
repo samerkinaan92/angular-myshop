@@ -45,11 +45,15 @@ export class ProductDetailsComponent implements OnInit, OnDestroy {
   loadProduct(id: string): void {
     this.dataService.getProduct(id).then(product => {
       this.product = product;
+    })
+    .catch(err => {
+      console.log(err);
+      
     });
     this.showBtns = this.route.snapshot.data.showBtns;
   }
 
   addToCart() {
-    this.cartService.addItem(this.productId);
+    this.cartService.addItem(this.product, 1);
   }
 }

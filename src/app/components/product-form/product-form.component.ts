@@ -29,8 +29,8 @@ export class ProductFormComponent implements OnInit {
   save() {
     const formModel = this.productForm.value;
     const newProduct: Product = {
-      id: this.productId,
-      categoryId: formModel.category.id,
+      _id: this.productId,
+      categoryId: formModel.category._id,
       imgUrl: formModel.img,
       title: formModel.title,
       price: formModel.price,
@@ -38,26 +38,36 @@ export class ProductFormComponent implements OnInit {
     }
 
     if (this.isNew) {
-      this.dataService.addProduct(newProduct);
-      this.productForm.reset({
-        category: this.categories[0],
-        img: '',
-        title: '',
-        price: 1,
-        description: ''
-      });
-      alert('Product was added successfully.');
+      this.dataService.addProduct(newProduct)
+        .then(res => {
+          this.productForm.reset({
+            category: this.categories[0],
+            img: '',
+            title: '',
+            price: 1,
+            description: ''
+          });
+          alert('Product was added successfully.');
+        })
+        .catch(err => {
+          console.error(err);
+        });
     } else {
-      this.dataService.editProduct(newProduct, this.productId);
-      this.productForm.reset({
-        category: this.categories[0],
-        img: '',
-        title: '',
-        price: 1,
-        description: ''
-      });
-      alert('Product was edited successfully.');
-      this.location.back();
+      this.dataService.editProduct(newProduct, this.productId)
+        .then(res => {
+          this.productForm.reset({
+            category: this.categories[0],
+            img: '',
+            title: '',
+            price: 1,
+            description: ''
+          });
+          alert('Product was edited successfully.');
+          this.location.back();
+        })
+        .catch(err => {
+          console.error(err);
+        });
     }
   }
 
@@ -79,7 +89,7 @@ export class ProductFormComponent implements OnInit {
       this.productId = this.route.snapshot.paramMap.get('id');
       newProduct = await this.dataService.getProduct(this.productId);
       this.productForm = this.fb.group({
-        category: [this.categories.find(category => category.id === newProduct.categoryId), Validators.required],
+        category: [this.categories.find(category => category._id === newProduct.categoryId), Validators.required],
         img: [newProduct.imgUrl, Validators.required],
         title: [newProduct.title, Validators.required],
         price: [newProduct.price, [Validators.required, Validators.min(0.01)]],

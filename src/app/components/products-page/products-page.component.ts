@@ -31,7 +31,7 @@ export class ProductsPageComponent implements OnInit {
     this.categoryId = '0';
   }
 
-  showProducts(id){
+  showProducts(id: string) {
     this.categoryId = id;
   }
 }

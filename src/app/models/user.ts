@@ -6,5 +6,5 @@ export enum UserType {
 export class User {
     type: UserType;
     username: string;
-    password: string;
+    token: string;
 }

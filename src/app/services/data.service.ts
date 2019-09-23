@@ -2,20 +2,18 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
 import { Category } from '../models/category';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
+import { GlobalVariable } from '../models/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private products: Product[];
-  private baseUrl: string = 'https://my-angular-shop.herokuapp.com';
-
   constructor(private http: HttpClient) { }
 
   getProducts(): Promise<Product[]> {
-    return this.http.get(this.baseUrl + '/api/products')
+    return this.http.get(GlobalVariable.BASE_API_URL + '/api/products')
       .pipe(
         map(json => json as Product[])
       )
@@ -23,7 +21,7 @@ export class DataService {
   }
 
   getCategories(): Promise<Category[]> {
-    return this.http.get(this.baseUrl + '/api/categories')
+    return this.http.get(GlobalVariable.BASE_API_URL + '/api/categories')
       .pipe(
         map(json => json as Category[])
       )
@@ -31,22 +29,20 @@ export class DataService {
   }
 
   getProduct(id: string): Promise<Product> {
-    return this.http.get(`${this.baseUrl}/api/products/${id}`)
+    return this.http.get(`${GlobalVariable.BASE_API_URL}/api/products/${id}`)
       .pipe(
         map(json => json as Product),
       )
       .toPromise();
   }
 
-  addProduct(product: Product): void {
-    this.http.post(this.baseUrl + '/api/products', product)
-      .toPromise()
-      .then();
+  addProduct(product: Product): Promise<any> {
+    return this.http.post(GlobalVariable.BASE_API_URL + '/api/products', product)
+      .toPromise();
   }
 
-  editProduct(product: Product, id: string): void {
-    this.http.put(`${this.baseUrl}/api/products/${id}`, product)
-      .toPromise()
-      .then();;
+  editProduct(product: Product, id: string): Promise<any> {
+    return this.http.put(`${GlobalVariable.BASE_API_URL}/api/products/${id}`, product)
+      .toPromise();
   }
 }

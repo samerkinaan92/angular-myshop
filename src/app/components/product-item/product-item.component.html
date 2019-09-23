@@ -1,5 +1,5 @@
 <div @onInit class="card">
-    <div [routerLink]="['/products', product.id]">
+    <div [routerLink]="['/products', product._id]">
         <img [src]="product.imgUrl" alt="product image">
         <div class="container">
             <h1>{{ product.title | uppercase}}</h1>

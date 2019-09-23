@@ -10,6 +10,7 @@ import { LoginFormComponent } from './components/login-form/login-form.component
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { AuthGuard } from './guards/auth.guard';
 import { UnsavedDataGuard } from './guards/unsaved-data.guard';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'add-product', component: ProductFormComponent, data: { new: true }, canDeactivate: [UnsavedDataGuard], canActivate: [AuthGuard] },
   { path: 'edit-product/:id', component: ProductFormComponent, data: { new: false }, canDeactivate: [UnsavedDataGuard], canActivate: [AuthGuard] },
   { path: 'login', component: LoginFormComponent },
+  { path: 'signup', component: SignupFormComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

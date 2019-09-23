@@ -22,8 +22,10 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { LocalizePipe } from './pipes/localize.pipe';
 import { ConfirmDirective } from './directives/app-confirm.directive';
-import { logInterceptor } from './interceptors/log-interceptor';
+import { LogInterceptor } from './interceptors/log-interceptor';
 import { MaterialModule } from './material/material.module';
+import { AuthInterceptor } from './interceptors/auth-interceptor';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import { MaterialModule } from './material/material.module';
     ContactFormComponent,
     ProductFormComponent,
     LocalizePipe,
-    ConfirmDirective
+    ConfirmDirective,
+    SignupFormComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,9 @@ import { MaterialModule } from './material/material.module';
     HttpClientModule,
     MaterialModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: logInterceptor, multi: true}],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

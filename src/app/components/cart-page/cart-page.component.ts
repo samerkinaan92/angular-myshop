@@ -17,9 +17,8 @@ export class CartPageComponent implements OnInit {
     this.items = this.cartService.getItems();
   }
 
-  removeItem(i: number) {
-    this.cartService.removeItem(i);
-    this.items.splice(i, 1);
+  removeItem(id: string, i: number): void {
+    this.cartService.removeItem(id, i);
   }
 
 }

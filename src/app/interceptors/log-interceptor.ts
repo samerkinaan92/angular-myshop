@@ -4,12 +4,11 @@ import { Observable } from 'rxjs';
 
 
 @Injectable()
-export class logInterceptor implements HttpInterceptor{
-    
-    
+export class LogInterceptor implements HttpInterceptor {
+
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         console.log(req);
         return next.handle(req);
     }
-    
+
 }

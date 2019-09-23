@@ -1,81 +1,84 @@
 import { Injectable } from '@angular/core';
-import { DataService } from './data.service';
 import { UserService } from './user.service';
 import { Subject, BehaviorSubject } from 'rxjs';
-import { Cart } from '../models/cart';
 import { Product } from '../models/product';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { GlobalVariable } from '../models/global';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private carts: Cart[] = [];
+
+  private cartItems: Product[] = [];
+  private userName: string;
   private subjectItemCount = new BehaviorSubject<number>(0);
 
-  constructor(private dataService: DataService, private userService: UserService) {
-    userService.getCurUserSubject().subscribe(value => {
-      const num = this.getItemsCount();
-      this.subjectItemCount.next(num);
+  constructor(private userService: UserService, private http: HttpClient) {
+    this.userService.getCurUserSubject().subscribe(value => {
+      this.userName = value;
+      this.loadCartItems();
     });
   }
 
-  addItem(productId: string): void {
-    const userName = this.userService.getCurUser();
-    if (userName != null) {
-      for (const cart of this.carts) {
-        if (cart.user === userName) {
-          cart.products.push(productId);
-          this.subjectItemCount.next(cart.products.length);
-
-          break;
-        }
-      }
-      this.carts.push({ user: userName, products: [productId] });
+  addItem(product: Product, quantity: number): Promise<boolean> {
+    if (this.userName) {
+      this.http.post(`${GlobalVariable.BASE_API_URL}/api/carts/${this.userName}`, { productId: product._id, quantity })
+        .toPromise()
+        .then(res => {
+          this.cartItems.push(product);
+          this.subjectItemCount.next(this.cartItems.length);
+          return true;
+        })
+        .catch(err => {
+          console.log(err);
+          return false;
+        });
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve(false);
+      })
     }
   }
 
-  removeItem(index: number): void {
-    console.log('removeItem()');
-    const userName = this.userService.getCurUser();
-    if (userName != null) {
-      for (const cart of this.carts) {
-        if (cart.user === userName) {
-          cart.products.splice(index, 1);
-          this.subjectItemCount.next(cart.products.length);
-          break;
-        }
-      }
+  removeItem(productId: string, i: number): void {
+    if (this.userName) {
+      this.http.delete(`${GlobalVariable.BASE_API_URL}/api/carts/${this.userName}.${productId}`)
+        .toPromise()
+        .then(res => {
+          this.cartItems.splice(i, 1);
+          this.subjectItemCount.next(this.cartItems.length);
+        })
+        .catch(err => {
+          console.error(err);
+        });
     }
   }
 
   getItems(): Product[] {
-    const userName = this.userService.getCurUser();
-    if (userName != null) {
-      for (const cart of this.carts) {
-        if (cart.user === userName) {
-          const products: Product[] = [];
-          for (const id of cart.products) {
-            this.dataService.getProduct(id).then(product => {
-              products.push(product);
-            });
-          }
-          return products;
-        }
-      }
-      return [];
+    return this.cartItems;
+  }
+
+  loadCartItems(): void {
+    if (this.userName) {
+      this.http.get(`${GlobalVariable.BASE_API_URL}/api/carts/${this.userName}`)
+        .pipe(map(json => json as Product[]))
+        .toPromise()
+        .then(res => {
+          this.cartItems = res;
+          this.subjectItemCount.next(this.cartItems.length);
+        });
+    } else {
+      this.cartItems = [];
+      this.subjectItemCount.next(0);
     }
-    return null;
   }
 
   getItemsCount(): number {
-    const userName = this.userService.getCurUser();
-    if (userName != null) {
-      for (const cart of this.carts) {
-        if (cart.user === userName) {
-          return cart.products.length;
-        }
-      }
+    if (this.userName) {
+      return this.cartItems.length;
     }
     return 0;
   }
